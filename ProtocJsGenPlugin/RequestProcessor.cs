@@ -18,7 +18,9 @@ internal static class RequestProcessor
             if (!request.FileToGenerate.Contains(protoFile.Name))
                 continue;
 
-            var fileContent = GenerateFileContent(protoFile);
+            // 创建TypeResolver来处理跨文件类型引用
+            var typeResolver = new TypeResolver(protoFile, request.ProtoFile);
+            var fileContent = GenerateFileContent(protoFile, typeResolver);
 
             response.File.Add(new CodeGeneratorResponse.Types.File
             {
@@ -36,9 +38,9 @@ internal static class RequestProcessor
         return Path.ChangeExtension(protoFileName, ".mjs");
     }
 
-    public static string GenerateFileContent(FileDescriptorProto protoFile)
+    public static string GenerateFileContent(FileDescriptorProto protoFile, TypeResolver typeResolver)
     {
-        var generator = new JsCodeGenerator(protoFile);
+        var generator = new JsCodeGenerator(protoFile, typeResolver);
         return generator.Generate();
     }
 }

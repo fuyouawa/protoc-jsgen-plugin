@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package test.math;
+package test.core;
 
 message Vector3 {
     double x = 1;

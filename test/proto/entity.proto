@@ -6,5 +6,5 @@ import "core/math.proto";
 
 message Entity {
     string name = 1;
-    math.Vector3 position = 2;
+    core.Vector3 position = 2;
 }

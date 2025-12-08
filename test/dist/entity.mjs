@@ -3,6 +3,8 @@
 
 // Package: test.entity
 
+import { Vector3 } from './core/math.mjs';
+
 // Message: Entity
 export class Entity {
     static __descriptor = {

@@ -3,6 +3,8 @@
 
 // Package: test.player
 
+import { Entity } from './entity.mjs';
+
 // Enum: Status
 export const Status = {
     UNKNOWN: 0,
