@@ -1,1 +1,0 @@
-protoc --plugin=protoc-gen-js-mjs="e:\Code\C#\Console\ProtocJsGenPlugin\ProtocJsGenPlugin\bin\Debug\net9.0\ProtocJsGenPlugin.exe" --js-mjs_out=. test.proto test2.proto

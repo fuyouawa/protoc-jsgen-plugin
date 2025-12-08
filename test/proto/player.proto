@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package pokeworld.player.cs;
+package test.player;
 
-import "test2.proto";
+import "entity.proto";
 
 message Player {
-    Entity entity_info = 1;
+    entity.Entity entity_info = 1;
     Status entity_state = 6;
 }
 

@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package pokeworld.player.cs;
-
-message Entity {
-    string name = 1;
-}
