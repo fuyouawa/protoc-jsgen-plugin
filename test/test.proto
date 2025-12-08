@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package pokeworld.player.cs;
+
+message Player {
+    string entity_info = 1;
+    Status entity_state = 6;
+}
+
+message GetPlayersResponse {
+    message Result {
+        bool success = 1;
+        uint64 entity_id = 2;
+        Player player = 3;
+    }
+
+    repeated Result results = 1;
+}
+
+enum Status {
+    UNKNOWN = 0;
+    ACTIVE = 1;
+    INACTIVE = 2;
+}
