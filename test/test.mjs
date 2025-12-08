@@ -17,12 +17,12 @@ export class Player {
         fullName: "pokeworld.player.cs.Player",
     }
 
-    /** @return {string} */
+    /** @return {Entity} */
     getEntityInfo() {
         return this.entity_info;
     }
 
-    /** @param {string} value */
+    /** @param {Entity} value */
     setEntityInfo(value) {
         this.entity_info = value;
     }
@@ -39,6 +39,44 @@ export class Player {
 
 }
 
+class __GetPlayersResponse_Result {
+    static __descriptor = {
+        name: "Result",
+        fullName: "pokeworld.player.cs.GetPlayersResponse.Result",
+    }
+
+    /** @return {boolean} */
+    getSuccess() {
+        return this.success;
+    }
+
+    /** @param {boolean} value */
+    setSuccess(value) {
+        this.success = value;
+    }
+
+    /** @return {number} */
+    getEntityId() {
+        return this.entity_id;
+    }
+
+    /** @param {number} value */
+    setEntityId(value) {
+        this.entity_id = value;
+    }
+
+    /** @return {Player} */
+    getPlayer() {
+        return this.player;
+    }
+
+    /** @param {Player} value */
+    setPlayer(value) {
+        this.player = value;
+    }
+
+}
+
 // Message: GetPlayersResponse
 export class GetPlayersResponse {
     static __descriptor = {
@@ -46,55 +84,16 @@ export class GetPlayersResponse {
         fullName: "pokeworld.player.cs.GetPlayersResponse",
     }
 
-    /** @return {Result[]} */
+    /** @return {__GetPlayersResponse_Result[]} */
     getResults() {
         return this.results;
     }
 
-    /** @param {Result[]} value */
+    /** @param {__GetPlayersResponse_Result[]} value */
     setResults(value) {
         this.results = value;
     }
 
-
-    // Nested message: Result
-    static Result = class {
-        static __descriptor = {
-            name: "Result",
-            fullName: "pokeworld.player.cs.GetPlayersResponse.Result",
-        }
-
-        /** @return {boolean} */
-        getSuccess() {
-            return this.success;
-        }
-
-        /** @param {boolean} value */
-        setSuccess(value) {
-            this.success = value;
-        }
-
-        /** @return {number} */
-        getEntityId() {
-            return this.entity_id;
-        }
-
-        /** @param {number} value */
-        setEntityId(value) {
-            this.entity_id = value;
-        }
-
-        /** @return {Player} */
-        getPlayer() {
-            return this.player;
-        }
-
-        /** @param {Player} value */
-        setPlayer(value) {
-            this.player = value;
-        }
-
-    };
-
+    static Result = __GetPlayersResponse_Result;
 }
 
