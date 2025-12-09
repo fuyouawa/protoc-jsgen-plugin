@@ -16,7 +16,7 @@ const config = {
   // 输出目录
   outputDir: join(__dirname, 'dist'),
   // protoc插件路径（相对于脚本目录）
-  pluginPath: resolve(__dirname, '../ProtocJsGenPlugin/bin/Debug/net9.0/ProtocJsGenPlugin.exe'),
+  pluginPath: resolve(__dirname, '../build/bin/Release/protoc-gen-js-plugin.exe'),
   // 要处理的proto文件
   protoFiles: [
     'entity.proto',
