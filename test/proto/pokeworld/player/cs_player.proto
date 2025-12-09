@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package pokeworld.player.cs;
+
+import "google/protobuf/descriptor.proto";
+
+import "pokeworld/module/module_id.proto";
+import "pokeworld/entity/comm_entity.proto";
+
+enum MessageId {
+    option (module.module_id) = MODULE_ID_PLAYER;
+    
+    MESSAGE_ID_INVALID = 0;
+    MESSAGE_ID_START_REQUEST = 1001;
+    MESSAGE_ID_START_RESPONSE = 1002;
+    MESSAGE_ID_GET_PLAYER_REQUEST = 1003;
+    MESSAGE_ID_GET_PLAYER_RESPONSE = 1004;
+}
+
+extend google.protobuf.MessageOptions {
+    MessageId message_id = 20070002;
+}
+
+message JoinGameRequest {
+    option (message_id) = MESSAGE_ID_START_REQUEST;
+    uint64 entity_id = 1;
+}
+
+message JoinGameResponse {
+    option (message_id) = MESSAGE_ID_START_RESPONSE;
+    bool success = 1;
+}
+
+message GetPlayersRequest {
+    option (message_id) = MESSAGE_ID_GET_PLAYER_REQUEST;
+    repeated uint64 entity_ids = 1;
+}
+
+message Player {
+    entity.comm.EntityInfo entity_info = 1;
+    entity.comm.ActorInfo actor_info = 2;
+    entity.comm.PlayerInfo player_info = 3;
+    entity.comm.EntityTransform entity_transform = 4;
+    entity.comm.ActorTransform actor_transform = 5;
+    entity.comm.ActorState actor_state = 6;
+}
+
+message GetPlayersResponse {
+    option (message_id) = MESSAGE_ID_GET_PLAYER_RESPONSE;
+
+    message Result {
+        bool success = 1;
+        uint64 entity_id = 2;
+        Player player = 3;
+    }
+
+    repeated Result results = 1;
+}

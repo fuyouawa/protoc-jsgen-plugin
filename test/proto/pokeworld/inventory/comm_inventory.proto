@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pokeworld.inventory.comm;
+
+enum Tab {
+    NONE = 0;
+    KNAPSACK = 1;
+    QUICK_USE = 2;
+}
+message Slot {
+    int32 item_id = 1;
+    int32 item_num = 2;
+}
+
+message Inventory {
+    Tab tab = 1;  // 页签
+    int32 max_slot = 2;
+    map<int32, Slot> slot_map = 3;  // slot_id -> slot
+}
+
+message Inventories {
+    repeated Inventory list = 1;
+}

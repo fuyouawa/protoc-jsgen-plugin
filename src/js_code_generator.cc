@@ -9,6 +9,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <filesystem>
 
 #include "google/protobuf/descriptor.pb.h"
 #include "type_helper.h"
@@ -43,6 +44,15 @@ std::string GetFileNameWithoutExtension(const std::string& path) {
     }
 
     return filename;
+}
+
+// Helper to compute relative path from current file to target file
+std::string GetRelativePath(const std::string& from, const std::string& to) {
+    // Use std::filesystem
+    std::filesystem::path from_path(from);
+    std::filesystem::path to_path(to);
+    std::filesystem::path relative = std::filesystem::relative(to_path, from_path.parent_path());
+    return relative.generic_string();
 }
 
 }  // namespace
@@ -178,17 +188,17 @@ void JsCodeGenerator::GenerateImports() {
 }
 
 std::string JsCodeGenerator::GetImportPath(const std::string& proto_file_path) const {
+    // Get current proto file path
+    std::string current_file = proto_file_.name();
+    // Compute relative path from current file's directory to target file
+    std::string relative_path = GetRelativePath(current_file, proto_file_path);
     // Change .proto extension to .mjs
-    std::string mjs_path = ChangeExtension(proto_file_path, ".mjs");
-
-    // Ensure forward slashes
-    std::replace(mjs_path.begin(), mjs_path.end(), '\\', '/');
-
-    // Add "./" prefix if not already a relative path
+    std::string mjs_path = ChangeExtension(relative_path, ".mjs");
+    // Ensure forward slashes (already done by generic_string)
+    // Add "./" prefix if not already a relative path starting with "./" or "../"
     if (mjs_path.find("./") != 0 && mjs_path.find("../") != 0) {
         mjs_path = "./" + mjs_path;
     }
-
     return mjs_path;
 }
 

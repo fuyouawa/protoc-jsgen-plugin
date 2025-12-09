@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package pokeworld.resource.cfg;
+
+
+enum ResourceId {
+    ResourceId_NONE = 0;
+    RESOURCEID_UI_LOGIN_PANEL = 1001;
+    RESOURCEID_UI_REGISTER_PANEL = 1002;
+    RESOURCEID_UI_SERVER_PANEL = 1003;
+    RESOURCEID_UI_SERVER_ITEM = 1004;
+    RESOURCEID_UI_PLAYER_SELECT_PANEL = 1005;
+    RESOURCEID_UI_PLAYER_SELECT_ITEM = 1006;
+    RESOURCEID_UI_PLAYER_GAME_PANEL = 1007;
+    RESOURCEID_UI_POKEDEX_PANEL = 1008;
+    RESOURCEID_UI_POKE_INFO_PANEL = 1009;
+    RESOURCEID_UI_ART_POKE_TYPE_ATLAS = 1010;
+    RESOURCEID_UI_ART_POKE_TYPE_ICON_ATLAS = 1011;
+    RESOURCEID_SCENE_DEMO = 1012;
+    RESOURCEID_SCENE_USER = 1013;
+    RESOURCEID_ACTOR_XIAO_ZHI = 1014;
+    RESOURCEID_ACTOR_ART_XIAO_ZHI_WALK_ATLAS = 1015;
+    RESOURCEID_ACTOR_ART_XIAO_ZHI_ILLUSTRATION = 1016;
+}
+
+
+message AssetAddress {
+     string packageName = 1 ;
+     string location = 2 ;
+}
+
+message Resource {
+    // 资源ID
+     resource.cfg.ResourceId id = 1 ;
+    // 资源地址
+     resource.cfg.AssetAddress asset_address = 2 ;
+}
+
+
+message TbResource {
+    repeated resource.cfg.Resource data_list = 1 [packed = false];
+}
+
+

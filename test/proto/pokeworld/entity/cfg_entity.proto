@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pokeworld.entity.cfg;
+
+import "pokeworld/actor/cfg_actor.proto";
+
+message Entity {
+    oneof value {
+        actor.cfg.Player Player = 1;
+    }
+}
+
+
+

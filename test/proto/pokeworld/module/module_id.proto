@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package pokeworld.module;
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.EnumOptions {
+    ModuleId module_id = 20000001;
+}
+
+enum ModuleId {
+    MODULE_ID_INVALID = 0;
+    MODULE_ID_AGENT = 1001;
+    MODULE_ID_BATTLE = 1002;
+    MODULE_ID_ENTITY = 1003;
+    MODULE_ID_INVENTORY = 1004;
+    MODULE_ID_MATH = 1005;
+    MODULE_ID_NETWORK = 1006;
+    MODULE_ID_PLAYER = 1007;
+    MODULE_ID_POKEMON = 1008;
+    MODULE_ID_USER = 1009;
+    MODULE_ID_WORLD = 1010;
+    MODULE_ID_ACTOR = 1011;
+}

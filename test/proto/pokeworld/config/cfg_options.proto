@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pokeworld.config.cfg;
+
+import "google/protobuf/descriptor.proto";
+
+message FieldOptionsTableLoader {
+    string table_name = 1;
+    string data_file_name = 2;
+}
+
+extend google.protobuf.FieldOptions {
+    FieldOptionsTableLoader table_loader = 10800;
+}

@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package pokeworld.world.cs;
+
+import "google/protobuf/descriptor.proto";
+
+import "pokeworld/module/module_id.proto";
+import "pokeworld/entity/comm_entity.proto";
+
+enum MessageId {
+    option (module.module_id) = MODULE_ID_WORLD;
+    
+    MESSAGE_ID_INVALID = 0;
+    MESSAGE_ID_MOVE_REQUEST = 1001;
+    MESSAGE_ID_EXIT_REQUEST = 1002;
+    MESSAGE_ID_EXIT_RESPONSE = 1003;
+    MESSAGE_ID_ENTITY_SYNC_NOTIFY = 1004;
+}
+
+extend google.protobuf.MessageOptions {
+    MessageId message_id = 20100002;
+}
+
+message MoveRequest {
+    option (message_id) = MESSAGE_ID_MOVE_REQUEST;
+    entity.comm.Direction movement = 1;
+    bool run = 2;
+}
+
+message ExitRequest {
+    option (message_id) = MESSAGE_ID_EXIT_REQUEST;
+}
+
+message ExitResponse {
+    option (message_id) = MESSAGE_ID_EXIT_RESPONSE;
+    bool success = 1;
+}
+
+message PlayerSync {
+    entity.comm.EntityInfo entity_info = 1;
+    entity.comm.EntityTransform entity_transform = 2;
+    entity.comm.ActorTransform actor_transform = 3;
+    entity.comm.ActorState actor_state = 4;
+}
+
+message NpcSync {
+    entity.comm.EntityInfo entity_info = 1;
+    entity.comm.EntityTransform entity_transform = 2;
+    entity.comm.ActorTransform actor_transform = 3;
+    entity.comm.ActorState actor_state = 4;
+}
+
+message EntitySync {
+    oneof sync {
+        PlayerSync player = 1;
+        NpcSync npc = 2;
+    }
+}
+
+message EntitySyncNotify {
+    option (message_id) = MESSAGE_ID_ENTITY_SYNC_NOTIFY;
+    repeated EntitySync syncs = 1;
+}

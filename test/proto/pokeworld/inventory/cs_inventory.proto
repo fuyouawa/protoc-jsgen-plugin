@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package pokeworld.inventory.cs;
+
+import "google/protobuf/descriptor.proto";
+
+import "pokeworld/module/module_id.proto";
+import "pokeworld/inventory/comm_inventory.proto";
+
+enum MessageId {
+    option (module.module_id) = MODULE_ID_INVENTORY;
+    
+    MESSAGE_ID_INVALID = 0;
+    MESSAGE_ID_PULL_REQUEST = 1;
+    MESSAGE_ID_SYNC_NOTIFY = 2;
+    MESSAGE_ID_SWAP_SLOT_REQUEST = 3;
+}
+
+extend google.protobuf.MessageOptions {
+    MessageId message_id = 20030002;
+}
+
+message PullRequest {
+    option (message_id) = MESSAGE_ID_PULL_REQUEST;
+    comm.Tab tab = 1;
+}
+
+message SyncNotify {
+    option (message_id) = MESSAGE_ID_SYNC_NOTIFY;
+    comm.Inventory inventory = 1;
+}
+
+message SwapSlotRequest {
+    option (message_id) = MESSAGE_ID_SWAP_SLOT_REQUEST;
+    int32 src_slot_id = 1;
+    int32 dest_slot_id = 2;
+}

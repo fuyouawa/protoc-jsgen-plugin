@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package pokeworld.user.comm;
+
+enum Config {
+    CONFIG_INVALID = 0;
+    CONFIG_PASSWORLD_MIN_LENGTH = 6;
+    CONFIG_PASSWORLD_MAX_LENGTH = 20;
+}

@@ -1,0 +1,183 @@
+syntax = "proto3";
+
+package pokeworld.pokemon.cfg;
+
+import "pokeworld/resource/cfg_resource.proto";
+enum MoveCategory {
+    // 物理
+    MOVECATEGORY_PHYSICAL = 0;
+    // 特殊
+    MOVECATEGORY_SPECIAL = 1;
+    // 变化
+    MOVECATEGORY_STATUS = 2;
+}
+
+enum PokeType {
+    // 一般
+    POKETYPE_NORMAL = 0;
+    // 飞行
+    POKETYPE_FLYING = 1;
+    // 火
+    POKETYPE_FIRE = 2;
+    // 超能
+    POKETYPE_PSYCHIC = 3;
+    // 水
+    POKETYPE_WATER = 4;
+    // 虫
+    POKETYPE_BUG = 5;
+    // 电
+    POKETYPE_ELECTRIC = 6;
+    // 岩石
+    POKETYPE_ROCK = 7;
+    // 草
+    POKETYPE_GRASS = 8;
+    // 幽灵
+    POKETYPE_GHOST = 9;
+    // 冰
+    POKETYPE_ICE = 10;
+    // 龙
+    POKETYPE_DRAGON = 11;
+    // 格斗
+    POKETYPE_FIGHTING = 12;
+    // 恶
+    POKETYPE_DARK = 13;
+    // 毒
+    POKETYPE_POISON = 14;
+    // 钢
+    POKETYPE_STEEL = 15;
+    // 地面
+    POKETYPE_GROUND = 16;
+    // 妖精
+    POKETYPE_FAIRY = 17;
+    // 未知
+    POKETYPE_UNKNOWN = 18;
+}
+
+
+message Move {
+    // id
+     int32 id = 1 ;
+    // 编号
+     int32 num = 2 ;
+    // 名称
+     string name = 3 ;
+    // 世代
+     int32 gen = 4 ;
+    // 威力
+     int32 base_power = 5 ;
+    // 点数
+     int32 pp = 6 ;
+    // 属性
+     pokemon.cfg.PokeType type = 7 ;
+    // 分类
+     pokemon.cfg.MoveCategory category = 8 ;
+    // 目标
+     string target = 9 ;
+    // 命中率
+     int32 accuracy = 10 ;
+    // 暴击率
+     int32 crit_ratio = 11 ;
+    // 副作用
+     string secondaries = 12 ;
+    // 优先级
+     int32 priority = 13 ;
+    // 忽略进攻增益
+     string ignore_offensive = 14 ;
+    // 忽略防御增益
+     string ignore_defensive = 15 ;
+    // 忽略免疫
+     string ignore_immunity = 16 ;
+    // 忽略闪避
+     string ignore_evasion = 17 ;
+    // 有强行特性
+     bool has_sheer_force = 18 ;
+    // 无点数增加
+     bool no_pp_boosts = 19 ;
+    // 忽略特性
+     bool ignore_ability = 20 ;
+    // Z招式
+     string z_move = 21 ;
+}
+
+message Pokemon {
+    // id
+     int32 id = 1 ;
+    // 编号
+     int32 num = 2 ;
+    // 名称
+     string name = 3 ;
+    // 世代
+     int32 gen = 4 ;
+    // 基础形态
+     string base_forme = 5 ;
+    // 其他形态
+     string other_formes = 6 ;
+    // 能力
+     string abilities = 7 ;
+    // 类型
+    repeated pokemon.cfg.PokeType poke_types = 8 [packed = false];
+    // 进化前
+     string prevo = 9 ;
+    // 进化
+     string evos = 10 ;
+    // 进化等级
+     int32 evo_level = 11 ;
+    // 分级
+     string tier = 12 ;
+    // 双打分级
+     string doubles_tier = 13 ;
+    // 全国图鉴分级
+     string nat_dex_tier = 14 ;
+    // 蛋组
+     string egg_groups = 15 ;
+    // 可捕捉
+     bool can_hatch = 16 ;
+    // 性别比率
+     string gender_ratio = 17 ;
+    // 血量
+     int32 hp = 18 ;
+    // 攻击
+     int32 atk = 19 ;
+    // 防御
+     int32 def = 20 ;
+    // 特攻
+     int32 spa = 21 ;
+    // 特防
+     int32 spd = 22 ;
+    // 速度
+     int32 spe = 23 ;
+    // 重量（kg）
+     float weight = 24 ;
+    // 升高（m）
+     float height = 25 ;
+    // 正面图集资源地址
+     resource.cfg.AssetAddress front_atlas_asset_adress = 26 ;
+    // 背面图集资源地址
+     resource.cfg.AssetAddress back_atlas_asset_adress = 27 ;
+}
+
+message PokeTypeInfo {
+    // ID
+     int32 id = 1 ;
+    // 宝可梦类型
+     pokemon.cfg.PokeType type = 2 ;
+    // 图集索引
+     int32 atlas_index = 3 ;
+    // 颜色
+     string color = 4 ;
+}
+
+
+message TbPokemon {
+    repeated pokemon.cfg.Pokemon data_list = 1 [packed = false];
+}
+
+message TbMove {
+    repeated pokemon.cfg.Move data_list = 1 [packed = false];
+}
+
+message TbPokeTypeInfo {
+    repeated pokemon.cfg.PokeTypeInfo data_list = 1 [packed = false];
+}
+
+

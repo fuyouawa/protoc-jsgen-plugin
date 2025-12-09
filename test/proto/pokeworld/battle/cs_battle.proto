@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pokeworld.battle.cs;
+
+import "google/protobuf/descriptor.proto";
+import "pokeworld/module/module_id.proto";
+
+enum MessageId {
+    option (module.module_id) = MODULE_ID_BATTLE;
+    
+    MSG_ID_INVALID = 0;
+}
+
+extend google.protobuf.MessageOptions {
+    MessageId msg_id = 20020002;
+}

@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package pokeworld.world.comm;
+
+import "pokeworld/world/cfg_world.proto";
+import "pokeworld/math/comm_math.proto";
+
+// 地形类型
+enum TerrainType {
+    // 普通地形
+    TERRAIN_TYPE_TERRAIN = 0;
+    // 复合地形，是混合在普通地形中的地形，比如草地中的道路
+    TERRAIN_TYPE_COMPOSITE_TERRAIN = 1;
+}
+
+// 地形定义节点
+message TerrainDefinitionNode {
+    // 分组名称/地形名称
+    string name = 1;
+
+    // 地形定义节点
+    oneof node {
+        // 地形定义分组
+        TerrainDefinitionGroup group = 2;
+        // 地形定义
+        TerrainDefinition definition = 3;
+    }
+}
+
+// 地形定义分组
+message TerrainDefinitionGroup {
+    // 分组名称
+    string name = 1;
+    // 地形定义节点表
+    repeated TerrainDefinitionNode nodes = 2;
+}
+
+// 地形定义
+message TerrainDefinition {
+    // 地形名称
+    string name = 1;
+    // 地形类型
+    TerrainType type = 2;
+}
+
+// 地形区域
+message TerrainSection {
+    message Tile {
+        // 瓦片位置（实际坐标=瓦片位置*瓦片大小+起始坐标）
+        math.comm.Vector3Int coordinate = 1;
+        // 瓦片规则类型
+        cfg.TerrainTileRuleType rule_type = 2;
+    }
+
+    // 地形名称
+    string terrain_name = 1;
+    // 瓦片表
+    repeated Tile tiles = 2;
+}
+
+// 世界数据
+message WorldData {
+    // 瓦片大小（保留字段，暂时都是1）
+    float tile_size = 1;
+    // 起始坐标（在后面可能有多个世界数据需要组合使用时，才会出现非原点的情况）
+    math.comm.Vector3 start_position = 2;
+    // 地基范围（x和z轴，高度无限）（在后面可能有多个世界数据需要组合使用时才会用到）
+    math.comm.Vector2Int base_range = 3;
+    // 地形定义节点表
+    repeated TerrainDefinitionNode terrain_definition_nodes = 4;
+    // 地形区域表（地形名称 -> 地形区域）
+    map<string, TerrainSection> terrain_section_by_name = 5;
+}
+
+message TbWorldData {
+    repeated WorldData data_list = 1 [packed = false];
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package pokeworld.network.cfg;
+
+
+// 服务器类型
+enum ServerType {
+    // 主要
+    SERVERTYPE_MAIN = 0;
+    // 资源下载
+    SERVERTYPE_RESOURCE_DOWNLOAD = 1;
+}
+
+
+message Server {
+    // Id
+     int32 id = 1 ;
+    // 类型
+     network.cfg.ServerType type = 2 ;
+    // 主机
+     string host = 3 ;
+    // 端口
+     int32 port = 4 ;
+}
+
+
+message TbServer {
+    repeated network.cfg.Server data_list = 1 [packed = false];
+}
+
+

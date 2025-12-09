@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package pokeworld.user.cs;
+
+import "google/protobuf/descriptor.proto";
+
+import "pokeworld/module/module_id.proto";
+import "pokeworld/user/comm_user.proto";
+
+enum MessageId {
+    option (module.module_id) = MODULE_ID_USER;
+    
+    MESSAGE_ID_INVALID = 0;
+    MESSAGE_ID_REGISTER_REQUEST = 1001;
+    MESSAGE_ID_REGISTER_RESPONSE = 1002;
+    MESSAGE_ID_LOGIN_REQUEST = 1003;
+    MESSAGE_ID_LOGIN_RESPONSE = 1004;
+    MESSAGE_ID_ENTER_SERVER_REQUEST = 1005;
+    MESSAGE_ID_ENTER_SERVER_RESPONSE = 1006;
+    MESSAGE_ID_GET_SERVERS_REQUEST = 1007;
+    MESSAGE_ID_GET_SERVERS_RESPONSE = 1008;
+    MESSAGE_ID_GET_CREATED_PLAYERS_REQUEST = 1009;
+    MESSAGE_ID_GET_CREATED_PLAYERS_RESPONSE = 1010;
+}
+
+extend google.protobuf.MessageOptions {
+    MessageId message_id = 20090002;
+}
+
+message RegisterRequest {
+    option (message_id) = MESSAGE_ID_REGISTER_REQUEST;
+    string email = 1;
+    string user_name = 2;
+    string password = 3;
+}
+
+message RegisterResponse {
+    option (message_id) = MESSAGE_ID_REGISTER_RESPONSE;
+    bool success = 1;
+}
+
+message LoginRequest {
+    option (message_id) = MESSAGE_ID_LOGIN_REQUEST;
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    option (message_id) = MESSAGE_ID_LOGIN_RESPONSE;
+    bool success = 1;
+    // repeated comm.user.Server servers = 2;
+}
+
+message EnterServerRequest {
+    option (message_id) = MESSAGE_ID_ENTER_SERVER_REQUEST;
+    int32 server_id = 1;
+}
+
+message EnterServerResponse {
+    option (message_id) = MESSAGE_ID_ENTER_SERVER_RESPONSE;
+    bool success = 1;
+}
+
+message GetServersRequest {
+    option (message_id) = MESSAGE_ID_GET_SERVERS_REQUEST;
+}
+
+message Server {
+    int32 id = 1;
+    string name = 2;
+    uint32 number = 3;  // 人数
+}
+
+message GetServersResponse {
+    option (message_id) = MESSAGE_ID_GET_SERVERS_RESPONSE;
+    bool success = 1;
+    repeated Server servers = 2;
+}
+
+message GetCreatedPlayersRequest {
+    option (message_id) = MESSAGE_ID_GET_CREATED_PLAYERS_REQUEST;
+}
+
+message GetCreatedPlayersResponse {
+    option (message_id) = MESSAGE_ID_GET_CREATED_PLAYERS_RESPONSE;
+    bool success = 1;
+    repeated uint64 entity_ids = 2;
+}

@@ -1,4 +1,4 @@
-bin/
-build/
-.vs/
-test/dist
+/bin/
+/build/
+/.vs/
+/nul

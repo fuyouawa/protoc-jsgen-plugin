@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package pokeworld.actor.cfg;
+
+import "pokeworld/resource/cfg_resource.proto";
+
+message Actor {
+    oneof value {
+        actor.cfg.Player Player = 1;
+    }
+}
+
+message Player {
+    // Id
+     int32 id = 1 ;
+    // 名称
+     string name = 2 ;
+    // 资源ID
+     resource.cfg.ResourceId resource_id = 3 ;
+    // 走路速度（m/s）
+     float walk_speed = 4 ;
+    // 走路图集资源ID
+     resource.cfg.ResourceId walk_atlas_resource_id = 5 ;
+    // 跑步速度（m/s）
+     float run_speed = 6 ;
+    // 起步转向时间（s）
+     float starting_turn_time = 7 ;
+    // 立绘资源ID
+     resource.cfg.ResourceId illustration_resource_id = 8 ;
+}
+
+
+message TbPlayer {
+    repeated actor.cfg.Player data_list = 1 [packed = false];
+}
+
+

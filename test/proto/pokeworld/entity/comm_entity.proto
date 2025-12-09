@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package pokeworld.entity.comm;
+
+import "pokeworld/math/comm_math.proto";
+import "pokeworld/entity/comm_model.proto";
+
+message EntityInfo {
+    uint64 id = 1;
+}
+
+message ActorInfo {
+    int32 cfg_id = 1;
+}
+
+message PlayerInfo {
+    string nickname = 2;
+}
+
+message NpcInfo {
+    string name = 2;
+}
+
+message EntityTransform {
+    math.comm.Vector2Int pos = 1;
+}
+
+message ActorTransform {
+    Direction direction = 2;
+}
+
+message ActorState {
+    MotionState motion_state = 1;
+}
+
+enum Type {
+    TYPE_PLAYER = 0;
+    TYPE_POKEMON = 1;
+}
+
+enum Direction {
+    DIRECTION_UP = 0;
+    DIRECTION_DOWN = 1;
+    DIRECTION_LEFT = 2;
+    DIRECTION_RIGHT = 3;
+}
+
+enum MotionState {
+    MOTION_STATE_IDLE = 0;
+    MOTION_STATE_MOVEMENT = 1;
+    MOTION_STATE_JUMP = 2;
+    MOTION_STATE_TELEPORT = 3;
+}

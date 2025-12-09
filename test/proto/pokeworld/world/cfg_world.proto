@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package pokeworld.world.cfg;
+
+import "pokeworld/math/comm_math.proto";
+// 地形标识
+enum TerrainFlags {
+    // 无
+    TERRAINFLAGS_NONE = 0;
+    // 通常用于道路，表示这条路可以行走
+    TERRAINFLAGS_WALKABLE = 1;
+    // 通常用于特殊道路，表示这条路不能行走
+    TERRAINFLAGS_NOWALKABLE = 2;
+    // 通常用于装饰物，表示这个装饰物可以穿过去
+    TERRAINFLAGS_PASSABLE = 4;
+    // 障碍物，表示这个位置不能通行
+    TERRAINFLAGS_OBSTACLE = 8;
+    // 只能单向通行，不能往回走
+    TERRAINFLAGS_SINGLE_WAY = 16;
+}
+
+enum TerrainRuleType {
+    // 无
+    TERRAINRULETYPE_NONE = 0;
+    // 填充
+    TERRAINRULETYPE_FILL = 1;
+    // 边缘
+    TERRAINRULETYPE_EDGE = 2;
+    // 外转角
+    TERRAINRULETYPE_EXTERIOR_CORNER = 3;
+    // 内转角
+    TERRAINRULETYPE_INTERIOR_CORNER = 4;
+}
+
+enum TerrainTileRuleType {
+    // 无
+    TERRAINTILERULETYPE_NONE = 0;
+    // 填充
+    TERRAINTILERULETYPE_FILL = 1;
+    // 上边缘
+    TERRAINTILERULETYPE_TOP_EDGE = 2;
+    // 右边缘
+    TERRAINTILERULETYPE_RIGHT_EDGE = 3;
+    // 下边缘
+    TERRAINTILERULETYPE_BOTTOM_EDGE = 4;
+    // 左边缘
+    TERRAINTILERULETYPE_LEFT_EDGE = 5;
+    // 左上部分的外转角
+    TERRAINTILERULETYPE_TOP_LEFT_EXTERIOR_CORNER = 6;
+    // 右上部分的外转角
+    TERRAINTILERULETYPE_TOP_RIGHT_EXTERIOR_CORNER = 7;
+    // 右下部分的外转角
+    TERRAINTILERULETYPE_BOTTOM_RIGHT_EXTERIOR_CORNER = 8;
+    // 左下部分的外转角
+    TERRAINTILERULETYPE_BOTTOM_LEFT_EXTERIOR_CORNER = 9;
+    // 左上部分的内转角
+    TERRAINTILERULETYPE_TOP_LEFT_INTERIOR_CORNER = 10;
+    // 右上部分的内转角
+    TERRAINTILERULETYPE_TOP_RIGHT_INTERIOR_CORNER = 11;
+    // 右下部分的内转角
+    TERRAINTILERULETYPE_BOTTOM_RIGHT_INTERIOR_CORNER = 12;
+    // 左下部分的内转角
+    TERRAINTILERULETYPE_BOTTOM_LEFT_INTERIOR_CORNER = 13;
+}
+
+// 地形类型
+enum TerrainType {
+    // 虚空，大道都破碎的地方
+    TERRAINTYPE_NONE = 0;
+    // 空气
+    TERRAINTYPE_AIR = 1;
+    // 踩在脚下的道路
+    TERRAINTYPE_ROAD = 2;
+    // 可以上下楼的楼梯
+    TERRAINTYPE_STAIR = 3;
+    // 可以上下攀爬的梯子
+    TERRAINTYPE_LADDER = 4;
+    // 表示是水域，如果没有障碍标识，则可以使用水上坐骑
+    TERRAINTYPE_WATER = 5;
+}
+
+
+message Terrain {
+    // id
+     int32 id = 1 ;
+    // 地形名称。如果是分组的话，就表示这个分组下的所有地形都使用这个配置
+     string name = 2 ;
+    // 用于在有多个瓦片重叠在一起时，计算地形的优先级。
+     int32 priority = 3 ;
+    // 指定要排除的规则类型
+    repeated world.cfg.TerrainRuleType exclude_rule_types = 4 [packed = false];
+    // 指定要排除的瓦片规则类型，用于更为精细化的排除配置。
+    repeated world.cfg.TerrainTileRuleType exclude_tile_rule_types = 5 [packed = false];
+    // 地形类型
+     world.cfg.TerrainType type = 6 ;
+    // 地形标识
+     world.cfg.TerrainFlags flags = 7 ;
+}
+
+message World {
+    // id
+     int32 id = 1 ;
+    // 名称
+     string name = 2 ;
+    // 生成位置
+     math.comm.Vector3Int spawn_position = 3 ;
+}
+
+
+message TbWorld {
+    repeated world.cfg.World data_list = 1 [packed = false];
+}
+
+message TbTerrain {
+    repeated world.cfg.Terrain data_list = 1 [packed = false];
+}
+
+

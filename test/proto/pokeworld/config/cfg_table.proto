@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package pokeworld.config.cfg;
+
+import "pokeworld/actor/cfg_actor.proto";
+import "pokeworld/network/cfg_network.proto";
+import "pokeworld/pokemon/cfg_pokemon.proto";
+import "pokeworld/world/cfg_world.proto";
+import "pokeworld/resource/cfg_resource.proto";
+
+import "pokeworld/config/cfg_options.proto";
+
+
+message Tables {
+    actor.cfg.TbPlayer actor_cfg_tbplayer = 1 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.actor.cfg.Player",
+        data_file_name: "actor_cfg_tbplayer"
+    }];
+    network.cfg.TbServer network_cfg_tbserver = 2 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.network.cfg.Server",
+        data_file_name: "network_cfg_tbserver"
+    }];
+    pokemon.cfg.TbPokemon pokemon_cfg_tbpokemon = 3 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.pokemon.cfg.Pokemon",
+        data_file_name: "pokemon_cfg_tbpokemon"
+    }];
+    pokemon.cfg.TbMove pokemon_cfg_tbmove = 4 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.pokemon.cfg.Move",
+        data_file_name: "pokemon_cfg_tbmove"
+    }];
+    pokemon.cfg.TbPokeTypeInfo pokemon_cfg_tbpoketypeinfo = 5 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.pokemon.cfg.PokeTypeInfo",
+        data_file_name: "pokemon_cfg_tbpoketypeinfo"
+    }];
+    world.cfg.TbWorld world_cfg_tbworld = 6 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.world.cfg.World",
+        data_file_name: "world_cfg_tbworld"
+    }];
+    world.cfg.TbTerrain world_cfg_tbterrain = 7 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.world.cfg.Terrain",
+        data_file_name: "world_cfg_tbterrain"
+    }];
+    resource.cfg.TbResource resource_cfg_tbresource = 8 [(pokeworld.config.cfg.table_loader) = {
+        table_name: "pokeworld.resource.cfg.Resource",
+        data_file_name: "resource_cfg_tbresource"
+    }];
+}
+

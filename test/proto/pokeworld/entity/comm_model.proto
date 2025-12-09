@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pokeworld.model.comm;
+
+message Player {
+    int32 unit_id = 1;
+}
+
+message Pokemon {
+
+}
