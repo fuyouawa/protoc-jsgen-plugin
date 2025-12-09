@@ -17,24 +17,36 @@ export class Entity {
         ]
     }
 
-    /** @return {string} */
+    /** 
+     * @return {string} 
+     */
     getName() {
         return this.name;
     }
 
-    /** @param {string} value */
+    /** 
+     * @param {string} value 
+     * @return {Entity} 
+     */
     setName(value) {
         this.name = value;
+        return this;
     }
 
-    /** @return {__CoreMath.Vector3} */
+    /** 
+     * @return {__CoreMath.Vector3} 
+     */
     getPosition() {
         return this.position;
     }
 
-    /** @param {__CoreMath.Vector3} value */
+    /** 
+     * @param {__CoreMath.Vector3} value 
+     * @return {Entity} 
+     */
     setPosition(value) {
         this.position = value;
+        return this;
     }
 
 }

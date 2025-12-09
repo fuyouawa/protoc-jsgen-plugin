@@ -18,7 +18,8 @@ message GetPlayersResponse {
         Player player = 3;
     }
 
-    repeated Result results = 1;
+    map<uint64, Player> players = 1;
+    repeated Result results = 2;
 }
 
 enum Status {

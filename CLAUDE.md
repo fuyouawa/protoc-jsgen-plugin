@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a C# Protobuf compiler plugin (`protoc-gen-js-mjs`) that generates JavaScript/ECMAScript modules (.mjs files) from .proto files. It implements Google's protoc plugin protocol (reading from stdin, writing to stdout).
 
-**Key design decision:** Uses getter/setter functions (方案C from `Protobuf生成JS方案.md`) to solve the naming conflict between JavaScript camelCase and Protobuf snake_case conventions.
+**Key design decision:** Uses getter/setter functions (方案B from `Protobuf生成JS方案.md`) to solve the naming conflict between JavaScript camelCase and Protobuf snake_case conventions.
 
 ## Build and Test Commands
 

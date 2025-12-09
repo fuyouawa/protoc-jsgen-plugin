@@ -13,11 +13,7 @@ package pokeworld.player.cs;
 
 message Player {
     entity.comm.EntityInfo entity_info = 1;
-    entity.comm.ActorInfo actor_info = 2;
-    entity.comm.PlayerInfo player_info = 3;
-    entity.comm.EntityTransform entity_transform = 4;
-    entity.comm.ActorTransform actor_transform = 5;
-    entity.comm.ActorState actor_state = 6;
+    // 略......
 }
 
 message GetPlayersResponse {
@@ -25,7 +21,6 @@ message GetPlayersResponse {
 
     message Result {
         bool success = 1;
-        uint64 entity_id = 2;
         Player player = 3;
     }
 
@@ -40,15 +35,23 @@ export class Player {
     static __descriptor = {
         name: "Player",
         fullName: "pokeworld.player.cs.Player",
+        // 略......
     }
 
     /** @type {EntityInfo} */
     entityInfo;
     // 略......
 
-    toJson() {
+    toJSON() {
         return {
-            entity_info: this.entityInfo.toJson(),
+            entity_info: this.entityInfo,
+            // 略......
+        };
+    }
+
+    static fromJSON(json) {
+        return {
+            entityInfo: EntityInfo.fromJSON(json.entity_info),
             // 略......
         };
     }
@@ -58,6 +61,7 @@ class __GetPlayersResponse_Result {
     static __descriptor = {
         name: "Result",
         fullName: "pokeworld.player.cs.GetPlayersResponse.Result",
+        // 略......
     }
 
     /** @type {boolean} */
@@ -65,20 +69,26 @@ class __GetPlayersResponse_Result {
     /** @type {Player} */
     player;
 
-    toJson() {
+    toJSON() {
         return {
             success: this.success,
-            player: this.player.toJson(),
+            player: this.player,
         };
     }
 
-    // 略......
+    fromJSON(json) {
+        return {
+            success: json.success,
+            player: Player.fromJSON(json.player),
+        };
+    }
 }
 
 export class GetPlayersResponse {
     static __descriptor = {
         name: "GetPlayersResponse",
         fullName: "pokeworld.player.cs.GetPlayersResponse",
+        // 略......
     }
 
     static Result = 
@@ -86,102 +96,52 @@ export class GetPlayersResponse {
     /** @type {__GetPlayersResponse_Result[]} */
     results;
 
-    toJson() {
+    toJSON() {
         return {
-            results: this.results.map(result => result.toJson())
+            results: this.results
+        };
+    }
+
+    fromJSON(json) {
+        return {
+            results: json.results.map(__GetPlayersResponse_Result.fromJSON),
         };
     }
 }
 ```
 ### 优点
 可控性高，可以很方便就能实现js中用camelCase风格的变量，然后序列化时用snake。
+并且由于自定义序列化，还能支持Map的序列化（JSON库不支持Map）。
 
 ### 缺点
-toJson() 每层很难维护，尤其有嵌套、数组、map、oneof的时候，需要确保每个子对象序列化时都调用了toJson。
+虽然toJSON可以由JSON.stringify自动调用，但是fromJSON需要手动调用。
+fromJSON 每层很难维护，尤其有嵌套、数组、map、oneof的时候，需要确保每个子对象反序列化时都调用了fromJSON。
+由于序列化和反序列化都多了一层转换，所以性能也会有损失。
 
-## 方案B - 为每个字段生成getter setter属性 
+## 方案B - 为每个字段生成get set函数
 ### JS示例
 ```javascript
 export class Player {
     static __descriptor = {
         name: "Player",
         fullName: "pokeworld.player.cs.Player",
+        // 略......
     }
 
-    /** @type {EntityInfo} */
-    get entityInfo() {
-        return this.entity_info;
-    }
-    
-    /** @param {EntityInfo} value */
-    set entityInfo(value) {
-        this.entity_info = value;
-    }
-
-    // 略......
-}
-
-class __GetPlayersResponse_Result {
-    static __descriptor = {
-        name: "Result",
-        fullName: "pokeworld.player.cs.GetPlayersResponse.Result",
-    }
-    
-    /** @type {boolean} */
-    get success() {
-        return this.success;
-    }
-    
-    /** @param {boolean} value */
-    set success(value) {
-        this.success = value;
-    }
-
-    // 略......
-}
-
-export class GetPlayersResponse {
-    static __descriptor = {
-        name: "GetPlayersResponse",
-        fullName: "pokeworld.player.cs.GetPlayersResponse",
-    }
-
-    static Result = __GetPlayersResponse_Result;
-
-    /** @type {__GetPlayersResponse_Result[]} */
-    get results() {
-        return this.results;
-    }
-    
-    /** @param {__GetPlayersResponse_Result[]} value */
-    set results(value) {
-        this.results = value;
-    }
-}
-```
-
-### 优点
-使用方便，可以直接使用JSON.stringify序列化，性能好。
-### 缺点
-如果一个proto字段在js中不需要处理，就会导致递归调用的问题（比如GetPlayersResponse的results，get是results，内部调用的也是results）。
-
-## 方案C - 为每个字段生成get set函数
-### JS示例
-```javascript
-export class Player {
-    static __descriptor = {
-        name: "Player",
-        fullName: "pokeworld.player.cs.Player",
-    }
-
-    /** @return {EntityInfo} */
+    /** 
+     * @return {EntityInfo} 
+    */
     getEntityInfo() {
         return this.entity_info;
     }
     
-    /** @param {EntityInfo} value */
+    /** 
+     * @param {EntityInfo} value 
+     * @return {Player}
+    */
     setEntityInfo(value) {
         this.entity_info = value;
+        return this;
     }
 
     // 略......
@@ -191,16 +151,23 @@ class __GetPlayersResponse_Result {
     static __descriptor = {
         name: "Result",
         fullName: "pokeworld.player.cs.GetPlayersResponse.Result",
+        // 略......
     }
     
-    /** @return {boolean} */
+    /**
+     * @return {boolean} 
+    */
     getSuccess() {
         return this.success;
     }
     
-    /** @param {boolean} value */
+    /** 
+     * @param {boolean} value 
+     * @return {__GetPlayersResponse_Result}
+    */
     setSuccess(value) {
         this.success = value;
+        return this;
     }
 
     // 略......
@@ -210,24 +177,39 @@ export class GetPlayersResponse {
     static __descriptor = {
         name: "GetPlayersResponse",
         fullName: "pokeworld.player.cs.GetPlayersResponse",
+        // 略......
     }
 
     static Result = __GetPlayersResponse_Result;
 
-    /** @return {__GetPlayersResponse_Result[]} */
+    /** 
+     * @return {__GetPlayersResponse_Result[]} 
+    */
     getResults() {
         return this.results;
     }
     
-    /** @param {__GetPlayersResponse_Result[]} value */
+    /** 
+     * @param {__GetPlayersResponse_Result[]} value 
+     * @return {GetPlayersResponse}
+    */
     setResults(value) {
         this.results = value;
+        return this;
     }
 }
 ```
 ### 优点
-没有方案A和方案B的缺点
+支持流式调用，JSON序列化不需要多一层转换，性能好。
 ### 缺点
-多写几个字母
+JSON序列化不支持Map，所以Map类型只能使用any，无法类型标注。
 
-## 最终选择 - 方案C
+## 方案C - 方案B结合方案A
+### 优点
+支持流式调用，支持Map
+### 缺点
+性能损失
+
+## 最终选择 - 方案B
+Map说到底用的也少，没必要为了支持一个Map损失性能。
+而且proto似乎会为每个map类型字段生成一个message

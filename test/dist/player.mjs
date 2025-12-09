@@ -26,34 +26,52 @@ export class Player {
         ]
     }
 
-    /** @return {__Entity.Entity} */
+    /** 
+     * @return {__Entity.Entity} 
+     */
     getEntityInfo() {
         return this.entity_info;
     }
 
-    /** @param {__Entity.Entity} value */
+    /** 
+     * @param {__Entity.Entity} value 
+     * @return {Player} 
+     */
     setEntityInfo(value) {
         this.entity_info = value;
+        return this;
     }
 
-    /** @return {__Entity2.Entity} */
+    /** 
+     * @return {__Entity2.Entity} 
+     */
     getEntityInfo2() {
         return this.entity_info2;
     }
 
-    /** @param {__Entity2.Entity} value */
+    /** 
+     * @param {__Entity2.Entity} value 
+     * @return {Player} 
+     */
     setEntityInfo2(value) {
         this.entity_info2 = value;
+        return this;
     }
 
-    /** @return {Status} */
+    /** 
+     * @return {Status} 
+     */
     getPlayerState() {
         return this.player_state;
     }
 
-    /** @param {Status} value */
+    /** 
+     * @param {Status} value 
+     * @return {Player} 
+     */
     setPlayerState(value) {
         this.player_state = value;
+        return this;
     }
 
 }
@@ -69,34 +87,96 @@ class __GetPlayersResponse_Result {
         ]
     }
 
-    /** @return {boolean} */
+    /** 
+     * @return {boolean} 
+     */
     getSuccess() {
         return this.success;
     }
 
-    /** @param {boolean} value */
+    /** 
+     * @param {boolean} value 
+     * @return {__GetPlayersResponse_Result} 
+     */
     setSuccess(value) {
         this.success = value;
+        return this;
     }
 
-    /** @return {number} */
+    /** 
+     * @return {number} 
+     */
     getEntityId() {
         return this.entity_id;
     }
 
-    /** @param {number} value */
+    /** 
+     * @param {number} value 
+     * @return {__GetPlayersResponse_Result} 
+     */
     setEntityId(value) {
         this.entity_id = value;
+        return this;
     }
 
-    /** @return {Player} */
+    /** 
+     * @return {Player} 
+     */
     getPlayer() {
         return this.player;
     }
 
-    /** @param {Player} value */
+    /** 
+     * @param {Player} value 
+     * @return {__GetPlayersResponse_Result} 
+     */
     setPlayer(value) {
         this.player = value;
+        return this;
+    }
+
+}
+
+class __GetPlayersResponse_PlayersEntry {
+    static __descriptor = {
+        name: "PlayersEntry",
+        fullName: "test.player.GetPlayersResponse.PlayersEntry",
+        fields: [
+            {name: "key", number: 1, type: "Uint64", label: "Optional"},
+            {name: "value", number: 2, type: "Message", typeName: ".test.player.Player", label: "Optional"}
+        ]
+    }
+
+    /** 
+     * @return {number} 
+     */
+    getKey() {
+        return this.key;
+    }
+
+    /** 
+     * @param {number} value 
+     * @return {__GetPlayersResponse_PlayersEntry} 
+     */
+    setKey(value) {
+        this.key = value;
+        return this;
+    }
+
+    /** 
+     * @return {Player} 
+     */
+    getValue() {
+        return this.value;
+    }
+
+    /** 
+     * @param {Player} value 
+     * @return {__GetPlayersResponse_PlayersEntry} 
+     */
+    setValue(value) {
+        this.value = value;
+        return this;
     }
 
 }
@@ -108,20 +188,44 @@ export class GetPlayersResponse {
         fullName: "test.player.GetPlayersResponse",
         package: "test.player",
         fields: [
-            {name: "results", number: 1, type: "Message", typeName: ".test.player.GetPlayersResponse.Result", label: "Repeated"}
+            {name: "players", number: 1, type: "Message", typeName: ".test.player.GetPlayersResponse.PlayersEntry", label: "Repeated"},
+            {name: "results", number: 2, type: "Message", typeName: ".test.player.GetPlayersResponse.Result", label: "Repeated"}
         ]
     }
 
-    /** @return {__GetPlayersResponse_Result[]} */
+    /** 
+     * @return {any} 
+     */
+    getPlayers() {
+        return this.players;
+    }
+
+    /** 
+     * @param {any} value 
+     * @return {GetPlayersResponse} 
+     */
+    setPlayers(value) {
+        this.players = value;
+        return this;
+    }
+
+    /** 
+     * @return {__GetPlayersResponse_Result[]} 
+     */
     getResults() {
         return this.results;
     }
 
-    /** @param {__GetPlayersResponse_Result[]} value */
+    /** 
+     * @param {__GetPlayersResponse_Result[]} value 
+     * @return {GetPlayersResponse} 
+     */
     setResults(value) {
         this.results = value;
+        return this;
     }
 
     static Result = __GetPlayersResponse_Result;
+    static PlayersEntry = __GetPlayersResponse_PlayersEntry;
 }
 

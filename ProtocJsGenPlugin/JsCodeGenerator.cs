@@ -11,7 +11,6 @@ internal class JsCodeGenerator
     private readonly FileDescriptorProto _protoFile;
     private readonly TypeResolver _typeResolver;
     private StringBuilder _sb = new StringBuilder();
-    private readonly Dictionary<string, string> _nestedClassNames = new Dictionary<string, string>();
     private readonly HashSet<string> _generatedNestedClasses = new HashSet<string>();
     private readonly HashSet<string> _referencedExternalTypes = new HashSet<string>();
     private Dictionary<string, string> _importAliases;
@@ -322,7 +321,7 @@ internal class JsCodeGenerator
         // 生成字段的getter/setter方法
         foreach (var field in messageType.Field)
         {
-            GenerateFieldMethods(field, indent + "    ");
+            GenerateFieldMethods(field, indent + "    ", className);
         }
 
         // 添加嵌套消息的静态引用
@@ -404,7 +403,7 @@ internal class JsCodeGenerator
         // 生成字段的getter/setter方法
         foreach (var field in messageType.Field)
         {
-            GenerateFieldMethods(field, "    ");
+            GenerateFieldMethods(field, "    ", independentClassName);
         }
 
         // 递归生成嵌套消息的独立类定义，并在当前类中添加静态引用
@@ -441,7 +440,7 @@ internal class JsCodeGenerator
         _sb.AppendLine($"{indent}}};");
     }
 
-    private void GenerateFieldMethods(FieldDescriptorProto field, string indent)
+    private void GenerateFieldMethods(FieldDescriptorProto field, string indent, string className)
     {
         var fieldName = field.Name;
         var camelCaseName = fieldName.SnakeToCamelCase();
@@ -466,16 +465,22 @@ internal class JsCodeGenerator
         var jsType = TypeHelper.GetJsType(field, _protoFile);
 
         // Getter方法
-        _sb.AppendLine($"{indent}/** @return {{{jsType}}} */");
+        _sb.AppendLine($"{indent}/** ");
+        _sb.AppendLine($"{indent} * @return {{{jsType}}} ");
+        _sb.AppendLine($"{indent} */");
         _sb.AppendLine($"{indent}get{TypeHelper.GetMethodName(field)}() {{");
         _sb.AppendLine($"{indent}    return this.{fieldName};");
         _sb.AppendLine($"{indent}}}");
         _sb.AppendLine();
 
-        // Setter方法
-        _sb.AppendLine($"{indent}/** @param {{{jsType}}} value */");
+        // Setter方法（支持流式调用）
+        _sb.AppendLine($"{indent}/** ");
+        _sb.AppendLine($"{indent} * @param {{{jsType}}} value ");
+        _sb.AppendLine($"{indent} * @return {{{className}}} ");
+        _sb.AppendLine($"{indent} */");
         _sb.AppendLine($"{indent}set{TypeHelper.GetMethodName(field)}(value) {{");
         _sb.AppendLine($"{indent}    this.{fieldName} = value;");
+        _sb.AppendLine($"{indent}    return this;");
         _sb.AppendLine($"{indent}}}");
 
         // 如果不是最后一个字段，添加空行

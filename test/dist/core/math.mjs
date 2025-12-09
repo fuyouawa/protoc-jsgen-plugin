@@ -16,34 +16,52 @@ export class Vector3 {
         ]
     }
 
-    /** @return {number} */
+    /** 
+     * @return {number} 
+     */
     getX() {
         return this.x;
     }
 
-    /** @param {number} value */
+    /** 
+     * @param {number} value 
+     * @return {Vector3} 
+     */
     setX(value) {
         this.x = value;
+        return this;
     }
 
-    /** @return {number} */
+    /** 
+     * @return {number} 
+     */
     getY() {
         return this.y;
     }
 
-    /** @param {number} value */
+    /** 
+     * @param {number} value 
+     * @return {Vector3} 
+     */
     setY(value) {
         this.y = value;
+        return this;
     }
 
-    /** @return {number} */
+    /** 
+     * @return {number} 
+     */
     getZ() {
         return this.z;
     }
 
-    /** @param {number} value */
+    /** 
+     * @param {number} value 
+     * @return {Vector3} 
+     */
     setZ(value) {
         this.z = value;
+        return this;
     }
 
 }

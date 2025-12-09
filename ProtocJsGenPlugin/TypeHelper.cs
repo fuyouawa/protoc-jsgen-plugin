@@ -18,8 +18,9 @@ internal static class TypeHelper
             // 检查是否是map（proto中的map会被表示为repeated的特定消息类型）
             if (IsMapField(field))
             {
-                var mapTypes = GetMapKeyValueTypes(field);
-                return $"Map<{mapTypes.keyType}, {mapTypes.valueType}>";
+                // var mapTypes = GetMapKeyValueTypes(field);
+                // return $"Map<{mapTypes.keyType}, {mapTypes.valueType}>";
+                return "any";   // JSON序列化不支持Map类型
             }
             else
             {
