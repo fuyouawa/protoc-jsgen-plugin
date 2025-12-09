@@ -24,19 +24,12 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::cerr << "protoc-gen-js-plugin: Parsed request, file_to_generate count: "
-              << request.file_to_generate_size() << std::endl;
     for (int i = 0; i < request.file_to_generate_size(); ++i) {
         std::cerr << "  - " << request.file_to_generate(i) << std::endl;
     }
-    std::cerr << "proto_file count: " << request.proto_file_size() << std::endl;
-
     // Process the request
     google::protobuf::compiler::CodeGeneratorResponse response =
         protoc_js_gen_plugin::RequestProcessor::ProcessRequest(request);
-
-    std::cerr << "protoc-gen-js-plugin: Generated " << response.file_size()
-              << " output files" << std::endl;
 
     // Write response to stdout
     google::protobuf::io::FileOutputStream output_stream(_fileno(stdout));
