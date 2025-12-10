@@ -39,6 +39,7 @@ export const PokeType = {
 export class Move {
     static __descriptor = {
         name: "Move",
+        get clrType() { return Move; },
         fullName: "pokeworld.pokemon.cfg.Move",
         package: "pokeworld.pokemon.cfg",
         fields: [
@@ -48,8 +49,8 @@ export class Move {
             {name: "gen", number: 4, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "base_power", number: 5, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "pp", number: 6, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "type", number: 7, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", label: "LABEL_OPTIONAL"},
-            {name: "category", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.MoveCategory", label: "LABEL_OPTIONAL"},
+            {name: "type", number: 7, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", get clrType() { return PokeType; },label: "LABEL_OPTIONAL"},
+            {name: "category", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.MoveCategory", get clrType() { return MoveCategory; },label: "LABEL_OPTIONAL"},
             {name: "target", number: 9, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "accuracy", number: 10, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "crit_ratio", number: 11, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
@@ -408,6 +409,7 @@ export class Move {
 export class Pokemon {
     static __descriptor = {
         name: "Pokemon",
+        get clrType() { return Pokemon; },
         fullName: "pokeworld.pokemon.cfg.Pokemon",
         package: "pokeworld.pokemon.cfg",
         fields: [
@@ -418,7 +420,7 @@ export class Pokemon {
             {name: "base_forme", number: 5, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "other_formes", number: 6, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "abilities", number: 7, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "poke_types", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", label: "LABEL_REPEATED"},
+            {name: "poke_types", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", get clrType() { return PokeType; },label: "LABEL_REPEATED"},
             {name: "prevo", number: 9, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "evos", number: 10, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "evo_level", number: 11, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
@@ -436,8 +438,8 @@ export class Pokemon {
             {name: "spe", number: 23, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "weight", number: 24, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
             {name: "height", number: 25, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
-            {name: "front_atlas_asset_adress", number: 26, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", label: "LABEL_OPTIONAL"},
-            {name: "back_atlas_asset_adress", number: 27, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", label: "LABEL_OPTIONAL"}
+            {name: "front_atlas_asset_adress", number: 26, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return __PokeworldResourceCfg_resource.AssetAddress; },label: "LABEL_OPTIONAL"},
+            {name: "back_atlas_asset_adress", number: 27, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return __PokeworldResourceCfg_resource.AssetAddress; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -879,11 +881,12 @@ export class Pokemon {
 export class PokeTypeInfo {
     static __descriptor = {
         name: "PokeTypeInfo",
+        get clrType() { return PokeTypeInfo; },
         fullName: "pokeworld.pokemon.cfg.PokeTypeInfo",
         package: "pokeworld.pokemon.cfg",
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "type", number: 2, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", label: "LABEL_OPTIONAL"},
+            {name: "type", number: 2, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", get clrType() { return PokeType; },label: "LABEL_OPTIONAL"},
             {name: "atlas_index", number: 3, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "color", number: 4, type: "TYPE_STRING", label: "LABEL_OPTIONAL"}
         ]
@@ -959,10 +962,11 @@ export class PokeTypeInfo {
 export class TbPokemon {
     static __descriptor = {
         name: "TbPokemon",
+        get clrType() { return TbPokemon; },
         fullName: "pokeworld.pokemon.cfg.TbPokemon",
         package: "pokeworld.pokemon.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Pokemon", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Pokemon", get clrType() { return Pokemon; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -988,10 +992,11 @@ export class TbPokemon {
 export class TbMove {
     static __descriptor = {
         name: "TbMove",
+        get clrType() { return TbMove; },
         fullName: "pokeworld.pokemon.cfg.TbMove",
         package: "pokeworld.pokemon.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Move", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Move", get clrType() { return Move; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -1017,10 +1022,11 @@ export class TbMove {
 export class TbPokeTypeInfo {
     static __descriptor = {
         name: "TbPokeTypeInfo",
+        get clrType() { return TbPokeTypeInfo; },
         fullName: "pokeworld.pokemon.cfg.TbPokeTypeInfo",
         package: "pokeworld.pokemon.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.PokeTypeInfo", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.PokeTypeInfo", get clrType() { return PokeTypeInfo; },label: "LABEL_REPEATED"}
         ]
     }
 

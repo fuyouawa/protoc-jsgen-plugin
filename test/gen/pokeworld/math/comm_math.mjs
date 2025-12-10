@@ -7,6 +7,7 @@
 export class Rect {
     static __descriptor = {
         name: "Rect",
+        get clrType() { return Rect; },
         fullName: "pokeworld.math.comm.Rect",
         package: "pokeworld.math.comm",
         fields: [
@@ -87,6 +88,7 @@ export class Rect {
 export class RectInt {
     static __descriptor = {
         name: "RectInt",
+        get clrType() { return RectInt; },
         fullName: "pokeworld.math.comm.RectInt",
         package: "pokeworld.math.comm",
         fields: [
@@ -167,6 +169,7 @@ export class RectInt {
 export class Vector2 {
     static __descriptor = {
         name: "Vector2",
+        get clrType() { return Vector2; },
         fullName: "pokeworld.math.comm.Vector2",
         package: "pokeworld.math.comm",
         fields: [
@@ -213,6 +216,7 @@ export class Vector2 {
 export class Vector2Int {
     static __descriptor = {
         name: "Vector2Int",
+        get clrType() { return Vector2Int; },
         fullName: "pokeworld.math.comm.Vector2Int",
         package: "pokeworld.math.comm",
         fields: [
@@ -259,6 +263,7 @@ export class Vector2Int {
 export class Vector3 {
     static __descriptor = {
         name: "Vector3",
+        get clrType() { return Vector3; },
         fullName: "pokeworld.math.comm.Vector3",
         package: "pokeworld.math.comm",
         fields: [
@@ -322,6 +327,7 @@ export class Vector3 {
 export class Vector3Int {
     static __descriptor = {
         name: "Vector3Int",
+        get clrType() { return Vector3Int; },
         fullName: "pokeworld.math.comm.Vector3Int",
         package: "pokeworld.math.comm",
         fields: [

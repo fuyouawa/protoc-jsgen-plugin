@@ -7,6 +7,7 @@
 export class FieldOptionsTableLoader {
     static __descriptor = {
         name: "FieldOptionsTableLoader",
+        get clrType() { return FieldOptionsTableLoader; },
         fullName: "pokeworld.config.cfg.FieldOptionsTableLoader",
         package: "pokeworld.config.cfg",
         fields: [

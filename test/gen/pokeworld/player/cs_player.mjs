@@ -18,6 +18,7 @@ export const MessageId = {
 export class JoinGameRequest {
     static __descriptor = {
         name: "JoinGameRequest",
+        get clrType() { return JoinGameRequest; },
         fullName: "pokeworld.player.cs.JoinGameRequest",
         package: "pokeworld.player.cs",
         fields: [
@@ -47,6 +48,7 @@ export class JoinGameRequest {
 export class JoinGameResponse {
     static __descriptor = {
         name: "JoinGameResponse",
+        get clrType() { return JoinGameResponse; },
         fullName: "pokeworld.player.cs.JoinGameResponse",
         package: "pokeworld.player.cs",
         fields: [
@@ -76,6 +78,7 @@ export class JoinGameResponse {
 export class GetPlayersRequest {
     static __descriptor = {
         name: "GetPlayersRequest",
+        get clrType() { return GetPlayersRequest; },
         fullName: "pokeworld.player.cs.GetPlayersRequest",
         package: "pokeworld.player.cs",
         fields: [
@@ -105,15 +108,16 @@ export class GetPlayersRequest {
 export class Player {
     static __descriptor = {
         name: "Player",
+        get clrType() { return Player; },
         fullName: "pokeworld.player.cs.Player",
         package: "pokeworld.player.cs",
         fields: [
-            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", label: "LABEL_OPTIONAL"},
-            {name: "actor_info", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorInfo", label: "LABEL_OPTIONAL"},
-            {name: "player_info", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.PlayerInfo", label: "LABEL_OPTIONAL"},
-            {name: "entity_transform", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", label: "LABEL_OPTIONAL"},
-            {name: "actor_transform", number: 5, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", label: "LABEL_OPTIONAL"},
-            {name: "actor_state", number: 6, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", label: "LABEL_OPTIONAL"}
+            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", get clrType() { return __PokeworldEntityComm_entity.EntityInfo; },label: "LABEL_OPTIONAL"},
+            {name: "actor_info", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorInfo", get clrType() { return __PokeworldEntityComm_entity.ActorInfo; },label: "LABEL_OPTIONAL"},
+            {name: "player_info", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.PlayerInfo", get clrType() { return __PokeworldEntityComm_entity.PlayerInfo; },label: "LABEL_OPTIONAL"},
+            {name: "entity_transform", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", get clrType() { return __PokeworldEntityComm_entity.EntityTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actor_transform", number: 5, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", get clrType() { return __PokeworldEntityComm_entity.ActorTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actor_state", number: 6, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", get clrType() { return __PokeworldEntityComm_entity.ActorState; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -218,11 +222,12 @@ export class Player {
 class __GetPlayersResponse_Result {
     static __descriptor = {
         name: "Result",
+        get clrType() { return __GetPlayersResponse_Result; },
         fullName: "pokeworld.player.cs.GetPlayersResponse.Result",
         fields: [
             {name: "success", number: 1, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
             {name: "entity_id", number: 2, type: "TYPE_UINT64", label: "LABEL_OPTIONAL"},
-            {name: "player", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.player.cs.Player", label: "LABEL_OPTIONAL"}
+            {name: "player", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.player.cs.Player", get clrType() { return Player; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -280,10 +285,11 @@ class __GetPlayersResponse_Result {
 export class GetPlayersResponse {
     static __descriptor = {
         name: "GetPlayersResponse",
+        get clrType() { return GetPlayersResponse; },
         fullName: "pokeworld.player.cs.GetPlayersResponse",
         package: "pokeworld.player.cs",
         fields: [
-            {name: "results", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.player.cs.GetPlayersResponse.Result", label: "LABEL_REPEATED"}
+            {name: "results", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.player.cs.GetPlayersResponse.Result", get clrType() { return __GetPlayersResponse_Result; },label: "LABEL_REPEATED"}
         ]
     }
 

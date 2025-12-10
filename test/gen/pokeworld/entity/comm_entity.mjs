@@ -31,6 +31,7 @@ export const MotionState = {
 export class EntityInfo {
     static __descriptor = {
         name: "EntityInfo",
+        get clrType() { return EntityInfo; },
         fullName: "pokeworld.entity.comm.EntityInfo",
         package: "pokeworld.entity.comm",
         fields: [
@@ -60,6 +61,7 @@ export class EntityInfo {
 export class ActorInfo {
     static __descriptor = {
         name: "ActorInfo",
+        get clrType() { return ActorInfo; },
         fullName: "pokeworld.entity.comm.ActorInfo",
         package: "pokeworld.entity.comm",
         fields: [
@@ -89,6 +91,7 @@ export class ActorInfo {
 export class PlayerInfo {
     static __descriptor = {
         name: "PlayerInfo",
+        get clrType() { return PlayerInfo; },
         fullName: "pokeworld.entity.comm.PlayerInfo",
         package: "pokeworld.entity.comm",
         fields: [
@@ -118,6 +121,7 @@ export class PlayerInfo {
 export class NpcInfo {
     static __descriptor = {
         name: "NpcInfo",
+        get clrType() { return NpcInfo; },
         fullName: "pokeworld.entity.comm.NpcInfo",
         package: "pokeworld.entity.comm",
         fields: [
@@ -147,10 +151,11 @@ export class NpcInfo {
 export class EntityTransform {
     static __descriptor = {
         name: "EntityTransform",
+        get clrType() { return EntityTransform; },
         fullName: "pokeworld.entity.comm.EntityTransform",
         package: "pokeworld.entity.comm",
         fields: [
-            {name: "pos", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.math.comm.Vector2Int", label: "LABEL_OPTIONAL"}
+            {name: "pos", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.math.comm.Vector2Int", get clrType() { return __PokeworldMathComm_math.Vector2Int; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -176,10 +181,11 @@ export class EntityTransform {
 export class ActorTransform {
     static __descriptor = {
         name: "ActorTransform",
+        get clrType() { return ActorTransform; },
         fullName: "pokeworld.entity.comm.ActorTransform",
         package: "pokeworld.entity.comm",
         fields: [
-            {name: "direction", number: 2, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.Direction", label: "LABEL_OPTIONAL"}
+            {name: "direction", number: 2, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.Direction", get clrType() { return Direction; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -205,10 +211,11 @@ export class ActorTransform {
 export class ActorState {
     static __descriptor = {
         name: "ActorState",
+        get clrType() { return ActorState; },
         fullName: "pokeworld.entity.comm.ActorState",
         package: "pokeworld.entity.comm",
         fields: [
-            {name: "motion_state", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.MotionState", label: "LABEL_OPTIONAL"}
+            {name: "motion_state", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.MotionState", get clrType() { return MotionState; },label: "LABEL_OPTIONAL"}
         ]
     }
 

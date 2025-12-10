@@ -13,17 +13,18 @@ import * as __PokeworldActorCfg_actor from '../actor/cfg_actor.mjs';
 export class Tables {
     static __descriptor = {
         name: "Tables",
+        get clrType() { return Tables; },
         fullName: "pokeworld.config.cfg.Tables",
         package: "pokeworld.config.cfg",
         fields: [
-            {name: "actor_cfg_tbplayer", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.TbPlayer", label: "LABEL_OPTIONAL"},
-            {name: "network_cfg_tbserver", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.TbServer", label: "LABEL_OPTIONAL"},
-            {name: "pokemon_cfg_tbpokemon", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokemon", label: "LABEL_OPTIONAL"},
-            {name: "pokemon_cfg_tbmove", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbMove", label: "LABEL_OPTIONAL"},
-            {name: "pokemon_cfg_tbpoketypeinfo", number: 5, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokeTypeInfo", label: "LABEL_OPTIONAL"},
-            {name: "world_cfg_tbworld", number: 6, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbWorld", label: "LABEL_OPTIONAL"},
-            {name: "world_cfg_tbterrain", number: 7, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbTerrain", label: "LABEL_OPTIONAL"},
-            {name: "resource_cfg_tbresource", number: 8, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.TbResource", label: "LABEL_OPTIONAL"}
+            {name: "actor_cfg_tbplayer", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.TbPlayer", get clrType() { return __PokeworldActorCfg_actor.TbPlayer; },label: "LABEL_OPTIONAL"},
+            {name: "network_cfg_tbserver", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.TbServer", get clrType() { return __PokeworldNetworkCfg_network.TbServer; },label: "LABEL_OPTIONAL"},
+            {name: "pokemon_cfg_tbpokemon", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokemon", get clrType() { return __PokeworldPokemonCfg_pokemon.TbPokemon; },label: "LABEL_OPTIONAL"},
+            {name: "pokemon_cfg_tbmove", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbMove", get clrType() { return __PokeworldPokemonCfg_pokemon.TbMove; },label: "LABEL_OPTIONAL"},
+            {name: "pokemon_cfg_tbpoketypeinfo", number: 5, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokeTypeInfo", get clrType() { return __PokeworldPokemonCfg_pokemon.TbPokeTypeInfo; },label: "LABEL_OPTIONAL"},
+            {name: "world_cfg_tbworld", number: 6, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbWorld", get clrType() { return __PokeworldWorldCfg_world.TbWorld; },label: "LABEL_OPTIONAL"},
+            {name: "world_cfg_tbterrain", number: 7, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbTerrain", get clrType() { return __PokeworldWorldCfg_world.TbTerrain; },label: "LABEL_OPTIONAL"},
+            {name: "resource_cfg_tbresource", number: 8, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.TbResource", get clrType() { return __PokeworldResourceCfg_resource.TbResource; },label: "LABEL_OPTIONAL"}
         ]
     }
 

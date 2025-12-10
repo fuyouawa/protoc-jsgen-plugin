@@ -18,10 +18,11 @@ export const MessageId = {
 export class MoveRequest {
     static __descriptor = {
         name: "MoveRequest",
+        get clrType() { return MoveRequest; },
         fullName: "pokeworld.world.cs.MoveRequest",
         package: "pokeworld.world.cs",
         fields: [
-            {name: "movement", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.Direction", label: "LABEL_OPTIONAL"},
+            {name: "movement", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.Direction", get clrType() { return __PokeworldEntityComm_entity.Direction; },label: "LABEL_OPTIONAL"},
             {name: "run", number: 2, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"}
         ]
     }
@@ -64,6 +65,7 @@ export class MoveRequest {
 export class ExitRequest {
     static __descriptor = {
         name: "ExitRequest",
+        get clrType() { return ExitRequest; },
         fullName: "pokeworld.world.cs.ExitRequest",
         package: "pokeworld.world.cs",
         fields: []
@@ -75,6 +77,7 @@ export class ExitRequest {
 export class ExitResponse {
     static __descriptor = {
         name: "ExitResponse",
+        get clrType() { return ExitResponse; },
         fullName: "pokeworld.world.cs.ExitResponse",
         package: "pokeworld.world.cs",
         fields: [
@@ -104,13 +107,14 @@ export class ExitResponse {
 export class PlayerSync {
     static __descriptor = {
         name: "PlayerSync",
+        get clrType() { return PlayerSync; },
         fullName: "pokeworld.world.cs.PlayerSync",
         package: "pokeworld.world.cs",
         fields: [
-            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", label: "LABEL_OPTIONAL"},
-            {name: "entity_transform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", label: "LABEL_OPTIONAL"},
-            {name: "actor_transform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", label: "LABEL_OPTIONAL"},
-            {name: "actor_state", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", label: "LABEL_OPTIONAL"}
+            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", get clrType() { return __PokeworldEntityComm_entity.EntityInfo; },label: "LABEL_OPTIONAL"},
+            {name: "entity_transform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", get clrType() { return __PokeworldEntityComm_entity.EntityTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actor_transform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", get clrType() { return __PokeworldEntityComm_entity.ActorTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actor_state", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", get clrType() { return __PokeworldEntityComm_entity.ActorState; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -184,13 +188,14 @@ export class PlayerSync {
 export class NpcSync {
     static __descriptor = {
         name: "NpcSync",
+        get clrType() { return NpcSync; },
         fullName: "pokeworld.world.cs.NpcSync",
         package: "pokeworld.world.cs",
         fields: [
-            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", label: "LABEL_OPTIONAL"},
-            {name: "entity_transform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", label: "LABEL_OPTIONAL"},
-            {name: "actor_transform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", label: "LABEL_OPTIONAL"},
-            {name: "actor_state", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", label: "LABEL_OPTIONAL"}
+            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", get clrType() { return __PokeworldEntityComm_entity.EntityInfo; },label: "LABEL_OPTIONAL"},
+            {name: "entity_transform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", get clrType() { return __PokeworldEntityComm_entity.EntityTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actor_transform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", get clrType() { return __PokeworldEntityComm_entity.ActorTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actor_state", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", get clrType() { return __PokeworldEntityComm_entity.ActorState; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -264,11 +269,12 @@ export class NpcSync {
 export class EntitySync {
     static __descriptor = {
         name: "EntitySync",
+        get clrType() { return EntitySync; },
         fullName: "pokeworld.world.cs.EntitySync",
         package: "pokeworld.world.cs",
         fields: [
-            {name: "player", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cs.PlayerSync", label: "LABEL_OPTIONAL"},
-            {name: "npc", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cs.NpcSync", label: "LABEL_OPTIONAL"}
+            {name: "player", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cs.PlayerSync", get clrType() { return PlayerSync; },label: "LABEL_OPTIONAL"},
+            {name: "npc", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cs.NpcSync", get clrType() { return NpcSync; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -312,10 +318,11 @@ export class EntitySync {
 export class EntitySyncNotify {
     static __descriptor = {
         name: "EntitySyncNotify",
+        get clrType() { return EntitySyncNotify; },
         fullName: "pokeworld.world.cs.EntitySyncNotify",
         package: "pokeworld.world.cs",
         fields: [
-            {name: "syncs", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cs.EntitySync", label: "LABEL_REPEATED"}
+            {name: "syncs", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cs.EntitySync", get clrType() { return EntitySync; },label: "LABEL_REPEATED"}
         ]
     }
 

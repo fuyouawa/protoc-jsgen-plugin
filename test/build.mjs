@@ -29,7 +29,7 @@ function findProtoFiles(dir) {
 // 配置
 const config = {
   protoDir: join(__dirname, 'proto'),
-  outputDir: join(__dirname, 'dist'),
+  outputDir: join(__dirname, 'gen'),
   pluginPath: resolve(__dirname, '../build/bin/Release/protoc-gen-js-plugin.exe'),
 };
 

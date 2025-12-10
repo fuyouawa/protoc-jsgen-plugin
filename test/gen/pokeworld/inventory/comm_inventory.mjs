@@ -14,6 +14,7 @@ export const Tab = {
 export class Slot {
     static __descriptor = {
         name: "Slot",
+        get clrType() { return Slot; },
         fullName: "pokeworld.inventory.comm.Slot",
         package: "pokeworld.inventory.comm",
         fields: [
@@ -59,10 +60,11 @@ export class Slot {
 class __Inventory_SlotMapEntry {
     static __descriptor = {
         name: "SlotMapEntry",
+        get clrType() { return __Inventory_SlotMapEntry; },
         fullName: "pokeworld.inventory.comm.Inventory.SlotMapEntry",
         fields: [
             {name: "key", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "value", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Slot", label: "LABEL_OPTIONAL"}
+            {name: "value", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Slot", get clrType() { return Slot; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -104,12 +106,13 @@ class __Inventory_SlotMapEntry {
 export class Inventory {
     static __descriptor = {
         name: "Inventory",
+        get clrType() { return Inventory; },
         fullName: "pokeworld.inventory.comm.Inventory",
         package: "pokeworld.inventory.comm",
         fields: [
-            {name: "tab", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.inventory.comm.Tab", label: "LABEL_OPTIONAL"},
+            {name: "tab", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.inventory.comm.Tab", get clrType() { return Tab; },label: "LABEL_OPTIONAL"},
             {name: "max_slot", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "slot_map", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory.SlotMapEntry", label: "LABEL_REPEATED"}
+            {name: "slot_map", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory.SlotMapEntry", get clrType() { return __Inventory_SlotMapEntry; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -168,10 +171,11 @@ export class Inventory {
 export class Inventories {
     static __descriptor = {
         name: "Inventories",
+        get clrType() { return Inventories; },
         fullName: "pokeworld.inventory.comm.Inventories",
         package: "pokeworld.inventory.comm",
         fields: [
-            {name: "list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory", label: "LABEL_REPEATED"}
+            {name: "list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory", get clrType() { return Inventory; },label: "LABEL_REPEATED"}
         ]
     }
 

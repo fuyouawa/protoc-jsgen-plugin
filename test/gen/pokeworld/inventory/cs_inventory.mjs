@@ -17,10 +17,11 @@ export const MessageId = {
 export class PullRequest {
     static __descriptor = {
         name: "PullRequest",
+        get clrType() { return PullRequest; },
         fullName: "pokeworld.inventory.cs.PullRequest",
         package: "pokeworld.inventory.cs",
         fields: [
-            {name: "tab", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.inventory.comm.Tab", label: "LABEL_OPTIONAL"}
+            {name: "tab", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.inventory.comm.Tab", get clrType() { return __PokeworldInventoryComm_inventory.Tab; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -46,10 +47,11 @@ export class PullRequest {
 export class SyncNotify {
     static __descriptor = {
         name: "SyncNotify",
+        get clrType() { return SyncNotify; },
         fullName: "pokeworld.inventory.cs.SyncNotify",
         package: "pokeworld.inventory.cs",
         fields: [
-            {name: "inventory", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory", label: "LABEL_OPTIONAL"}
+            {name: "inventory", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory", get clrType() { return __PokeworldInventoryComm_inventory.Inventory; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -75,6 +77,7 @@ export class SyncNotify {
 export class SwapSlotRequest {
     static __descriptor = {
         name: "SwapSlotRequest",
+        get clrType() { return SwapSlotRequest; },
         fullName: "pokeworld.inventory.cs.SwapSlotRequest",
         package: "pokeworld.inventory.cs",
         fields: [

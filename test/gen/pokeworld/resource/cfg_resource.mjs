@@ -28,6 +28,7 @@ export const ResourceId = {
 export class AssetAddress {
     static __descriptor = {
         name: "AssetAddress",
+        get clrType() { return AssetAddress; },
         fullName: "pokeworld.resource.cfg.AssetAddress",
         package: "pokeworld.resource.cfg",
         fields: [
@@ -74,11 +75,12 @@ export class AssetAddress {
 export class Resource {
     static __descriptor = {
         name: "Resource",
+        get clrType() { return Resource; },
         fullName: "pokeworld.resource.cfg.Resource",
         package: "pokeworld.resource.cfg",
         fields: [
-            {name: "id", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", label: "LABEL_OPTIONAL"},
-            {name: "asset_address", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", label: "LABEL_OPTIONAL"}
+            {name: "id", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return ResourceId; },label: "LABEL_OPTIONAL"},
+            {name: "asset_address", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return AssetAddress; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -120,10 +122,11 @@ export class Resource {
 export class TbResource {
     static __descriptor = {
         name: "TbResource",
+        get clrType() { return TbResource; },
         fullName: "pokeworld.resource.cfg.TbResource",
         package: "pokeworld.resource.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.Resource", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.Resource", get clrType() { return Resource; },label: "LABEL_REPEATED"}
         ]
     }
 

@@ -21,7 +21,7 @@ message GetPlayersResponse {
 
     message Result {
         bool success = 1;
-        Player player = 3;
+        Player player = 2;
     }
 
     repeated Result results = 1;
@@ -50,10 +50,10 @@ export class Player {
     }
 
     static fromJSON(json) {
-        return {
-            entityInfo: EntityInfo.fromJSON(json.entity_info),
-            // 略......
-        };
+        const __result = new Player();
+        __result.entityInfo = EntityInfo.fromJSON(json.entity_info);
+        // 略......
+        return __result;
     }
 }
 
@@ -77,10 +77,10 @@ class __GetPlayersResponse_Result {
     }
 
     fromJSON(json) {
-        return {
-            success: json.success,
-            player: Player.fromJSON(json.player),
-        };
+        const __result = new __GetPlayersResponse_Result();
+        __result.success = json.success;
+        __result.player = Player.fromJSON(json.player);
+        return __result;
     }
 }
 
@@ -91,7 +91,7 @@ export class GetPlayersResponse {
         // 略......
     }
 
-    static Result = 
+    static Result = __GetPlayersResponse_Result;
 
     /** @type {__GetPlayersResponse_Result[]} */
     results;
@@ -103,15 +103,15 @@ export class GetPlayersResponse {
     }
 
     fromJSON(json) {
-        return {
-            results: json.results.map(__GetPlayersResponse_Result.fromJSON),
-        };
+        const __result = new GetPlayersResponse();
+        __result.results = json.results.map(__GetPlayersResponse_Result.fromJSON);
+        return __result;
     }
 }
 ```
 ### 优点
 可控性高，可以很方便就能实现js中用camelCase风格的变量，然后序列化时用snake。
-并且由于自定义序列化，还能支持Map的序列化（JSON库不支持Map）。
+并且由于自定义序列化，反序列化时也能获取原型链。
 
 ### 缺点
 虽然toJSON可以由JSON.stringify自动调用，但是fromJSON需要手动调用。
@@ -203,13 +203,136 @@ export class GetPlayersResponse {
 支持流式调用，JSON序列化不需要多一层转换，性能好。
 ### 缺点
 JSON序列化不支持Map，所以Map类型只能使用any，无法类型标注。
+由于JSON反序列化不支持原型链，所以反序列化后的object不包含类的信息。
 
 ## 方案C - 方案B结合方案A
+### JS示例
+```javascript
+export class Player {
+    static __descriptor = {
+        name: "Player",
+        fullName: "pokeworld.player.cs.Player",
+        // 略......
+    }
+
+    #entityInfo;
+
+    /** 
+     * @return {EntityInfo} 
+    */
+    getEntityInfo() {
+        return this.#entityInfo;
+    }
+    
+    /** 
+     * @param {EntityInfo} value 
+     * @return {Player}
+    */
+    setEntityInfo(value) {
+        this.#entityInfo = value;
+        return this;
+    }
+
+    // 略......
+
+    toJSON() {
+        return {
+            entity_info: this.getEntityInfo(),
+            // 略......
+        };
+    }
+
+    static fromJSON(json) {
+        return new Player()
+            .setEntityInfo(EntityInfo.fromJSON(json.entity_info));
+            // 略......
+    }
+}
+
+class __GetPlayersResponse_Result {
+    static __descriptor = {
+        name: "Result",
+        fullName: "pokeworld.player.cs.GetPlayersResponse.Result",
+        // 略......
+    }
+
+    #success;
+    
+    /**
+     * @return {boolean} 
+    */
+    getSuccess() {
+        return this.#success;
+    }
+    
+    /** 
+     * @param {boolean} value 
+     * @return {__GetPlayersResponse_Result}
+    */
+    setSuccess(value) {
+        this.#success = value;
+        return this;
+    }
+
+    // 略......
+
+    toJSON() {
+        return {
+            success: this.getSuccess(),
+            // 略......
+        };
+    }
+
+    static fromJSON(json) {
+        return new __GetPlayersResponse_Result()
+            .setSuccess(json.success);
+            // 略......
+    }
+}
+
+export class GetPlayersResponse {
+    static __descriptor = {
+        name: "GetPlayersResponse",
+        fullName: "pokeworld.player.cs.GetPlayersResponse",
+        // 略......
+    }
+
+    static Result = __GetPlayersResponse_Result;
+
+    #results;
+
+    /** 
+     * @return {__GetPlayersResponse_Result[]} 
+    */
+    getResults() {
+        return this.#results;
+    }
+    
+    /** 
+     * @param {__GetPlayersResponse_Result[]} value 
+     * @return {GetPlayersResponse}
+    */
+    setResults(value) {
+        this.#results = value;
+        return this;
+    }
+
+    toJSON() {
+        return {
+            results: this.getResults(),
+        };
+    }
+
+    static fromJSON(json) {
+        return new GetPlayersResponse()
+            .setResults(json.results.map(__GetPlayersResponse_Result.fromJSON));
+    }
+}
+```
+
 ### 优点
-支持流式调用，支持Map
+支持流式调用，支持反序列化的原型链获取。
 ### 缺点
-性能损失
+性能损失，复杂度高。
 
 ## 最终选择 - 方案B
-Map说到底用的也少，没必要为了支持一个Map损失性能。
-而且proto似乎会为每个map类型字段生成一个message

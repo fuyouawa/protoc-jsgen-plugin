@@ -9,10 +9,11 @@ import * as __PokeworldResourceCfg_resource from '../resource/cfg_resource.mjs';
 export class Actor {
     static __descriptor = {
         name: "Actor",
+        get clrType() { return Actor; },
         fullName: "pokeworld.actor.cfg.Actor",
         package: "pokeworld.actor.cfg",
         fields: [
-            {name: "Player", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", label: "LABEL_OPTIONAL"}
+            {name: "player", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", get clrType() { return Player; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -21,7 +22,7 @@ export class Actor {
      * @return {Player} 
      */
     getPlayer() {
-        return this.Player;
+        return this.player;
     }
 
     /** 
@@ -29,7 +30,7 @@ export class Actor {
      * @return {Actor} 
      */
     setPlayer(value) {
-        this.Player = value;
+        this.player = value;
         return this;
     }
 
@@ -39,17 +40,18 @@ export class Actor {
 export class Player {
     static __descriptor = {
         name: "Player",
+        get clrType() { return Player; },
         fullName: "pokeworld.actor.cfg.Player",
         package: "pokeworld.actor.cfg",
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "resource_id", number: 3, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", label: "LABEL_OPTIONAL"},
+            {name: "resource_id", number: 3, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"},
             {name: "walk_speed", number: 4, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
-            {name: "walk_atlas_resource_id", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", label: "LABEL_OPTIONAL"},
+            {name: "walk_atlas_resource_id", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"},
             {name: "run_speed", number: 6, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
             {name: "starting_turn_time", number: 7, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
-            {name: "illustration_resource_id", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", label: "LABEL_OPTIONAL"}
+            {name: "illustration_resource_id", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -187,10 +189,11 @@ export class Player {
 export class TbPlayer {
     static __descriptor = {
         name: "TbPlayer",
+        get clrType() { return TbPlayer; },
         fullName: "pokeworld.actor.cfg.TbPlayer",
         package: "pokeworld.actor.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", get clrType() { return Player; },label: "LABEL_REPEATED"}
         ]
     }
 

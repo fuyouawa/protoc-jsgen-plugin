@@ -6,7 +6,7 @@ import "pokeworld/resource/cfg_resource.proto";
 
 message Actor {
     oneof value {
-        actor.cfg.Player Player = 1;
+        actor.cfg.Player player = 1;
     }
 }
 

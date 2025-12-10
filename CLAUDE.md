@@ -89,8 +89,7 @@ The plugin follows the standard protoc plugin interface:
 - `test/` – Test proto files and build scripts
   - `test/proto/` – Sample `.proto` files (including a nested `pokeworld/` hierarchy)
   - `test/build.mjs` – Node.js script that runs protoc with the plugin
-  - `test/streaming-example.mjs` – Demo of using the generated classes
-  - `test/dist/` – Generated JavaScript output (git‑ignored)
+  - `test/gen/` – Generated JavaScript output
 - `third-party/` – Git submodule for protobuf (`third-party/protobuf`)
 - `build/` – CMake build directory (git‑ignored)
 

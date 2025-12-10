@@ -56,16 +56,17 @@ export const TerrainType = {
 export class Terrain {
     static __descriptor = {
         name: "Terrain",
+        get clrType() { return Terrain; },
         fullName: "pokeworld.world.cfg.Terrain",
         package: "pokeworld.world.cfg",
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "priority", number: 3, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "exclude_rule_types", number: 4, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainRuleType", label: "LABEL_REPEATED"},
-            {name: "exclude_tile_rule_types", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainTileRuleType", label: "LABEL_REPEATED"},
-            {name: "type", number: 6, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainType", label: "LABEL_OPTIONAL"},
-            {name: "flags", number: 7, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainFlags", label: "LABEL_OPTIONAL"}
+            {name: "exclude_rule_types", number: 4, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainRuleType", get clrType() { return TerrainRuleType; },label: "LABEL_REPEATED"},
+            {name: "exclude_tile_rule_types", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainTileRuleType", get clrType() { return TerrainTileRuleType; },label: "LABEL_REPEATED"},
+            {name: "type", number: 6, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainType", get clrType() { return TerrainType; },label: "LABEL_OPTIONAL"},
+            {name: "flags", number: 7, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainFlags", get clrType() { return TerrainFlags; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -187,12 +188,13 @@ export class Terrain {
 export class World {
     static __descriptor = {
         name: "World",
+        get clrType() { return World; },
         fullName: "pokeworld.world.cfg.World",
         package: "pokeworld.world.cfg",
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "spawn_position", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.math.comm.Vector3Int", label: "LABEL_OPTIONAL"}
+            {name: "spawn_position", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.math.comm.Vector3Int", get clrType() { return __PokeworldMathComm_math.Vector3Int; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -250,10 +252,11 @@ export class World {
 export class TbWorld {
     static __descriptor = {
         name: "TbWorld",
+        get clrType() { return TbWorld; },
         fullName: "pokeworld.world.cfg.TbWorld",
         package: "pokeworld.world.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.World", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.World", get clrType() { return World; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -279,10 +282,11 @@ export class TbWorld {
 export class TbTerrain {
     static __descriptor = {
         name: "TbTerrain",
+        get clrType() { return TbTerrain; },
         fullName: "pokeworld.world.cfg.TbTerrain",
         package: "pokeworld.world.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.Terrain", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.Terrain", get clrType() { return Terrain; },label: "LABEL_REPEATED"}
         ]
     }
 

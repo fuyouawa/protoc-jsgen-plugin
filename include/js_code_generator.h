@@ -60,6 +60,10 @@ private:
         const std::string& indent,
         const std::string& class_name);
 
+    // Helper to get JavaScript class reference for a field
+    std::string GetFieldClassRef(
+        const google::protobuf::FieldDescriptorProto& field);
+
     // Member variables
     const google::protobuf::FileDescriptorProto& proto_file_;
     const TypeResolver& type_resolver_;

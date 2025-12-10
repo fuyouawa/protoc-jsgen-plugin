@@ -9,10 +9,11 @@ import * as __PokeworldActorCfg_actor from '../actor/cfg_actor.mjs';
 export class Entity {
     static __descriptor = {
         name: "Entity",
+        get clrType() { return Entity; },
         fullName: "pokeworld.entity.cfg.Entity",
         package: "pokeworld.entity.cfg",
         fields: [
-            {name: "Player", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", label: "LABEL_OPTIONAL"}
+            {name: "Player", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", get clrType() { return __PokeworldActorCfg_actor.Player; },label: "LABEL_OPTIONAL"}
         ]
     }
 

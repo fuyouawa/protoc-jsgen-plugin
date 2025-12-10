@@ -7,6 +7,7 @@
 export class Player {
     static __descriptor = {
         name: "Player",
+        get clrType() { return Player; },
         fullName: "pokeworld.model.comm.Player",
         package: "pokeworld.model.comm",
         fields: [
@@ -36,6 +37,7 @@ export class Player {
 export class Pokemon {
     static __descriptor = {
         name: "Pokemon",
+        get clrType() { return Pokemon; },
         fullName: "pokeworld.model.comm.Pokemon",
         package: "pokeworld.model.comm",
         fields: []

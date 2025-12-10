@@ -344,6 +344,7 @@ void JsCodeGenerator::GenerateMessage(
     // Static descriptor
     output_ << indent << "    static __descriptor = {\n";
     output_ << indent << "        name: \"" << class_name << "\",\n";
+    output_ << indent << "        get clrType() { return " << class_name << "; },\n";
     output_ << indent << "        fullName: \"" << full_name << "\",\n";
     if (!parent_full_name.empty()) {
         output_ << indent << "        package: \"" << parent_full_name << "\",\n";
@@ -361,6 +362,11 @@ void JsCodeGenerator::GenerateMessage(
             output_ << "type: \"" << FieldDescriptorProto::Type_Name(field.type()) << "\", ";
             if (!field.type_name().empty()) {
                 output_ << "typeName: \"" << field.type_name() << "\", ";
+            }
+            // Add clrType field for message and enum types
+            std::string class_ref = GetFieldClassRef(field);
+            if (!class_ref.empty()) {
+                output_ << "get clrType() { return " << class_ref << "; },";
             }
             output_ << "label: \"" << FieldDescriptorProto::Label_Name(field.label()) << "\"}";
             if (i < message_type.field_size() - 1) {
@@ -423,6 +429,7 @@ std::string JsCodeGenerator::GenerateNestedMessageClass(
     // Static descriptor
     output_ << "    static __descriptor = {\n";
     output_ << "        name: \"" << class_name << "\",\n";
+    output_ << "        get clrType() { return " << independent_class_name << "; },\n";
     output_ << "        fullName: \"" << full_name << "\",\n";
 
     // Field descriptors
@@ -437,6 +444,11 @@ std::string JsCodeGenerator::GenerateNestedMessageClass(
             output_ << "type: \"" << FieldDescriptorProto::Type_Name(field.type()) << "\", ";
             if (!field.type_name().empty()) {
                 output_ << "typeName: \"" << field.type_name() << "\", ";
+            }
+            // Add clrType field for message and enum types
+            std::string class_ref = GetFieldClassRef(field);
+            if (!class_ref.empty()) {
+                output_ << "get clrType() { return " << class_ref << "; },";
             }
             output_ << "label: \"" << FieldDescriptorProto::Label_Name(field.label()) << "\"}";
             if (i < message_type.field_size() - 1) {
@@ -535,5 +547,44 @@ void JsCodeGenerator::GenerateFieldMethods(
     output_ << indent << "    this." << field_name << " = value;\n";
     output_ << indent << "    return this;\n";
     output_ << indent << "}\n\n";
+}
+
+std::string JsCodeGenerator::GetFieldClassRef(
+    const google::protobuf::FieldDescriptorProto& field) {
+
+    using google::protobuf::FieldDescriptorProto;
+
+    // Only message and enum types need class references
+    if (field.type() != FieldDescriptorProto::TYPE_MESSAGE &&
+        field.type() != FieldDescriptorProto::TYPE_ENUM) {
+        return "";
+    }
+
+    // Use the type name transformer to get the JavaScript reference
+    if (TypeHelper::GetTypeNameTransformer()) {
+        std::string transformed = TypeHelper::GetTypeNameTransformer()(field.type_name(), proto_file_);
+        if (!transformed.empty()) {
+            return transformed;
+        }
+    }
+
+    // For local types, get the appropriate class name
+    if (field.type() == FieldDescriptorProto::TYPE_MESSAGE) {
+        return TypeHelper::GetMessageTypeName(field.type_name(), proto_file_);
+    } else if (field.type() == FieldDescriptorProto::TYPE_ENUM) {
+        // For enums, return the last component (enum name)
+        // Remove leading dot if present
+        std::string type_name = field.type_name();
+        if (!type_name.empty() && type_name[0] == '.') {
+            type_name = type_name.substr(1);
+        }
+        size_t pos = type_name.find_last_of('.');
+        if (pos != std::string::npos) {
+            return type_name.substr(pos + 1);
+        }
+        return type_name;
+    }
+
+    return "";
 }
 }

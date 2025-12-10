@@ -13,11 +13,12 @@ export const ServerType = {
 export class Server {
     static __descriptor = {
         name: "Server",
+        get clrType() { return Server; },
         fullName: "pokeworld.network.cfg.Server",
         package: "pokeworld.network.cfg",
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "type", number: 2, type: "TYPE_ENUM", typeName: ".pokeworld.network.cfg.ServerType", label: "LABEL_OPTIONAL"},
+            {name: "type", number: 2, type: "TYPE_ENUM", typeName: ".pokeworld.network.cfg.ServerType", get clrType() { return ServerType; },label: "LABEL_OPTIONAL"},
             {name: "host", number: 3, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "port", number: 4, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
         ]
@@ -93,10 +94,11 @@ export class Server {
 export class TbServer {
     static __descriptor = {
         name: "TbServer",
+        get clrType() { return TbServer; },
         fullName: "pokeworld.network.cfg.TbServer",
         package: "pokeworld.network.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.Server", label: "LABEL_REPEATED"}
+            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.Server", get clrType() { return Server; },label: "LABEL_REPEATED"}
         ]
     }
 

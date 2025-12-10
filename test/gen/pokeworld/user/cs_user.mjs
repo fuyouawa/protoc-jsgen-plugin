@@ -22,6 +22,7 @@ export const MessageId = {
 export class RegisterRequest {
     static __descriptor = {
         name: "RegisterRequest",
+        get clrType() { return RegisterRequest; },
         fullName: "pokeworld.user.cs.RegisterRequest",
         package: "pokeworld.user.cs",
         fields: [
@@ -85,6 +86,7 @@ export class RegisterRequest {
 export class RegisterResponse {
     static __descriptor = {
         name: "RegisterResponse",
+        get clrType() { return RegisterResponse; },
         fullName: "pokeworld.user.cs.RegisterResponse",
         package: "pokeworld.user.cs",
         fields: [
@@ -114,6 +116,7 @@ export class RegisterResponse {
 export class LoginRequest {
     static __descriptor = {
         name: "LoginRequest",
+        get clrType() { return LoginRequest; },
         fullName: "pokeworld.user.cs.LoginRequest",
         package: "pokeworld.user.cs",
         fields: [
@@ -160,6 +163,7 @@ export class LoginRequest {
 export class LoginResponse {
     static __descriptor = {
         name: "LoginResponse",
+        get clrType() { return LoginResponse; },
         fullName: "pokeworld.user.cs.LoginResponse",
         package: "pokeworld.user.cs",
         fields: [
@@ -189,6 +193,7 @@ export class LoginResponse {
 export class EnterServerRequest {
     static __descriptor = {
         name: "EnterServerRequest",
+        get clrType() { return EnterServerRequest; },
         fullName: "pokeworld.user.cs.EnterServerRequest",
         package: "pokeworld.user.cs",
         fields: [
@@ -218,6 +223,7 @@ export class EnterServerRequest {
 export class EnterServerResponse {
     static __descriptor = {
         name: "EnterServerResponse",
+        get clrType() { return EnterServerResponse; },
         fullName: "pokeworld.user.cs.EnterServerResponse",
         package: "pokeworld.user.cs",
         fields: [
@@ -247,6 +253,7 @@ export class EnterServerResponse {
 export class GetServersRequest {
     static __descriptor = {
         name: "GetServersRequest",
+        get clrType() { return GetServersRequest; },
         fullName: "pokeworld.user.cs.GetServersRequest",
         package: "pokeworld.user.cs",
         fields: []
@@ -258,6 +265,7 @@ export class GetServersRequest {
 export class Server {
     static __descriptor = {
         name: "Server",
+        get clrType() { return Server; },
         fullName: "pokeworld.user.cs.Server",
         package: "pokeworld.user.cs",
         fields: [
@@ -321,11 +329,12 @@ export class Server {
 export class GetServersResponse {
     static __descriptor = {
         name: "GetServersResponse",
+        get clrType() { return GetServersResponse; },
         fullName: "pokeworld.user.cs.GetServersResponse",
         package: "pokeworld.user.cs",
         fields: [
             {name: "success", number: 1, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
-            {name: "servers", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.user.cs.Server", label: "LABEL_REPEATED"}
+            {name: "servers", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.user.cs.Server", get clrType() { return Server; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -367,6 +376,7 @@ export class GetServersResponse {
 export class GetCreatedPlayersRequest {
     static __descriptor = {
         name: "GetCreatedPlayersRequest",
+        get clrType() { return GetCreatedPlayersRequest; },
         fullName: "pokeworld.user.cs.GetCreatedPlayersRequest",
         package: "pokeworld.user.cs",
         fields: []
@@ -378,6 +388,7 @@ export class GetCreatedPlayersRequest {
 export class GetCreatedPlayersResponse {
     static __descriptor = {
         name: "GetCreatedPlayersResponse",
+        get clrType() { return GetCreatedPlayersResponse; },
         fullName: "pokeworld.user.cs.GetCreatedPlayersResponse",
         package: "pokeworld.user.cs",
         fields: [
