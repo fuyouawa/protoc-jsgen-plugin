@@ -81,7 +81,7 @@ export class Resource {
         package: "pokeworld.resource.cfg",
         fields: [
             {name: "id", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return ResourceId; },label: "LABEL_OPTIONAL"},
-            {name: "asset_address", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return AssetAddress; },label: "LABEL_OPTIONAL"}
+            {name: "assetAddress", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return AssetAddress; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -105,7 +105,7 @@ export class Resource {
      * @return {AssetAddress} 
      */
     getAssetAddress() {
-        return this.asset_address;
+        return this.assetAddress;
     }
 
     /** 
@@ -113,7 +113,7 @@ export class Resource {
      * @return {Resource} 
      */
     setAssetAddress(value) {
-        this.asset_address = value;
+        this.assetAddress = value;
         return this;
     }
 
@@ -127,7 +127,7 @@ export class TbResource {
         fullName: "pokeworld.resource.cfg.TbResource",
         package: "pokeworld.resource.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.Resource", get clrType() { return Resource; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.Resource", get clrType() { return Resource; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -135,7 +135,7 @@ export class TbResource {
      * @return {Resource[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -143,7 +143,7 @@ export class TbResource {
      * @return {TbResource} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 

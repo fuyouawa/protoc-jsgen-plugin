@@ -54,8 +54,14 @@ export function fromJson(messageCls, json) {
 
     // 遍历字段并设置值
     for (const field of desc.fields) {
-        const fieldName = field.name;
-        const jsonValue = json[fieldName];
+        const fieldName = field.name; // camelCase in __descriptor
+        // Try camelCase first, then snake_case for compatibility
+        let jsonValue = json[fieldName];
+        if (jsonValue === undefined) {
+            // Try converting camelCase to snake_case
+            const snakeCaseName = camelToSnake(fieldName);
+            jsonValue = json[snakeCaseName];
+        }
 
         // 如果JSON中没有该字段，跳过（可能是可选字段）
         if (jsonValue === undefined) {
@@ -88,6 +94,16 @@ function processFieldValue(field, value) {
 
     // 处理单个字段
     return processSingleFieldValue(field, value);
+}
+
+// Convert camelCase to snake_case
+function camelToSnake(str) {
+    return str.replace(/([A-Z])/g, '_$1').toLowerCase();
+}
+
+// Convert snake_case to camelCase
+function snakeToCamel(str) {
+    return str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
 }
 
 function processSingleFieldValue(field, value) {

@@ -3,7 +3,6 @@
 ## 目的
 当js作为动态语言接入一个项目的时候，就会遇到proto方面处理的一些问题。比较稳定的方案就是js中构建对象，然后传给后端解析。
 目前采用的主要方案是js中将对象序列化为json，然后后端可以直接用pb序列化。
-不过会有一些问题，最主要的就是js是camelCase的变量命名，而proto是snake的。
 
 ## Proto示例
 ```protobuf
@@ -44,14 +43,14 @@ export class Player {
 
     toJSON() {
         return {
-            entity_info: this.entityInfo,
+            entityInfo: this.entityInfo,
             // 略......
         };
     }
 
     static fromJSON(json) {
         const __result = new Player();
-        __result.entityInfo = EntityInfo.fromJSON(json.entity_info);
+        __result.entityInfo = EntityInfo.fromJSON(json.entityInfo);
         // 略......
         return __result;
     }
@@ -111,7 +110,7 @@ export class GetPlayersResponse {
 ```
 ### 优点
 可控性高，可以很方便就能实现js中用camelCase风格的变量，然后序列化时用snake。
-并且由于自定义序列化，反序列化时也能获取原型链。
+并且由于自定义序列化，反序列化时也能获取原型链，也能支持map的序列化。
 
 ### 缺点
 虽然toJSON可以由JSON.stringify自动调用，但是fromJSON需要手动调用。
@@ -132,7 +131,7 @@ export class Player {
      * @return {EntityInfo} 
     */
     getEntityInfo() {
-        return this.entity_info;
+        return this.entityInfo;
     }
     
     /** 
@@ -140,7 +139,7 @@ export class Player {
      * @return {Player}
     */
     setEntityInfo(value) {
-        this.entity_info = value;
+        this.entityInfo = value;
         return this;
     }
 
@@ -237,14 +236,14 @@ export class Player {
 
     toJSON() {
         return {
-            entity_info: this.getEntityInfo(),
+            entityInfo: this.getEntityInfo(),
             // 略......
         };
     }
 
     static fromJSON(json) {
         return new Player()
-            .setEntityInfo(EntityInfo.fromJSON(json.entity_info));
+            .setEntityInfo(EntityInfo.fromJSON(json.entityInfo));
             // 略......
     }
 }

@@ -99,7 +99,7 @@ export class TbServer {
         fullName: "pokeworld.network.cfg.TbServer",
         package: "pokeworld.network.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.Server", get clrType() { return Server; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.Server", get clrType() { return Server; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -107,7 +107,7 @@ export class TbServer {
      * @return {Server[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -115,7 +115,7 @@ export class TbServer {
      * @return {TbServer} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 

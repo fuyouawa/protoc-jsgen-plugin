@@ -11,7 +11,7 @@ export class Player {
         fullName: "pokeworld.model.comm.Player",
         package: "pokeworld.model.comm",
         fields: [
-            {name: "unit_id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
+            {name: "unitId", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -19,7 +19,7 @@ export class Player {
      * @return {number} 
      */
     getUnitId() {
-        return this.unit_id;
+        return this.unitId;
     }
 
     /** 
@@ -27,7 +27,7 @@ export class Player {
      * @return {Player} 
      */
     setUnitId(value) {
-        this.unit_id = value;
+        this.unitId = value;
         return this;
     }
 

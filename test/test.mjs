@@ -113,8 +113,8 @@ function testRepeatedField() {
     // Serialize
     const json = toJson(tbPlayer);
     const parsed = JSON.parse(json);
-    assert(Array.isArray(parsed.data_list), 'data_list is array');
-    assert(parsed.data_list.length === 2, 'Array length correct');
+    assert(Array.isArray(parsed.dataList), 'dataList is array');
+    assert(parsed.dataList.length === 2, 'Array length correct');
 
     // Deserialize
     const restored = fromJson(TbPlayer, json);
@@ -137,7 +137,7 @@ function testEnumField() {
 
     const json = toJson(player);
     const parsed = JSON.parse(json);
-    assert(parsed.resource_id !== undefined, 'Enum field exists');
+    assert(parsed.resourceId !== undefined, 'Enum field exists');
 
     // Deserialize
     const restored = fromJson(Player, json);

@@ -67,8 +67,8 @@ export class Terrain {
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "priority", number: 3, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "exclude_rule_types", number: 4, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainRuleType", get clrType() { return TerrainRuleType; },label: "LABEL_REPEATED"},
-            {name: "exclude_tile_rule_types", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainTileRuleType", get clrType() { return TerrainTileRuleType; },label: "LABEL_REPEATED"},
+            {name: "excludeRuleTypes", number: 4, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainRuleType", get clrType() { return TerrainRuleType; },label: "LABEL_REPEATED"},
+            {name: "excludeTileRuleTypes", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainTileRuleType", get clrType() { return TerrainTileRuleType; },label: "LABEL_REPEATED"},
             {name: "type", number: 6, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainType", get clrType() { return TerrainType; },label: "LABEL_OPTIONAL"},
             {name: "flags", number: 7, type: "TYPE_ENUM", typeName: ".pokeworld.world.cfg.TerrainFlags", get clrType() { return TerrainFlags; },label: "LABEL_OPTIONAL"}
         ]
@@ -126,7 +126,7 @@ export class Terrain {
      * @return {TerrainRuleType[]} 
      */
     getExcludeRuleTypes() {
-        return this.exclude_rule_types;
+        return this.excludeRuleTypes;
     }
 
     /** 
@@ -134,7 +134,7 @@ export class Terrain {
      * @return {Terrain} 
      */
     setExcludeRuleTypes(value) {
-        this.exclude_rule_types = value;
+        this.excludeRuleTypes = value;
         return this;
     }
 
@@ -142,7 +142,7 @@ export class Terrain {
      * @return {TerrainTileRuleType[]} 
      */
     getExcludeTileRuleTypes() {
-        return this.exclude_tile_rule_types;
+        return this.excludeTileRuleTypes;
     }
 
     /** 
@@ -150,7 +150,7 @@ export class Terrain {
      * @return {Terrain} 
      */
     setExcludeTileRuleTypes(value) {
-        this.exclude_tile_rule_types = value;
+        this.excludeTileRuleTypes = value;
         return this;
     }
 
@@ -198,7 +198,7 @@ export class World {
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "spawn_position", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.math.comm.Vector3Int", get clrType() { return __PokeworldMathComm_math.Vector3Int; },label: "LABEL_OPTIONAL"}
+            {name: "spawnPosition", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.math.comm.Vector3Int", get clrType() { return __PokeworldMathComm_math.Vector3Int; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -238,7 +238,7 @@ export class World {
      * @return {__PokeworldMathComm_math.Vector3Int} 
      */
     getSpawnPosition() {
-        return this.spawn_position;
+        return this.spawnPosition;
     }
 
     /** 
@@ -246,7 +246,7 @@ export class World {
      * @return {World} 
      */
     setSpawnPosition(value) {
-        this.spawn_position = value;
+        this.spawnPosition = value;
         return this;
     }
 
@@ -260,7 +260,7 @@ export class TbWorld {
         fullName: "pokeworld.world.cfg.TbWorld",
         package: "pokeworld.world.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.World", get clrType() { return World; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.World", get clrType() { return World; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -268,7 +268,7 @@ export class TbWorld {
      * @return {World[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -276,7 +276,7 @@ export class TbWorld {
      * @return {TbWorld} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 
@@ -290,7 +290,7 @@ export class TbTerrain {
         fullName: "pokeworld.world.cfg.TbTerrain",
         package: "pokeworld.world.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.Terrain", get clrType() { return Terrain; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.Terrain", get clrType() { return Terrain; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -298,7 +298,7 @@ export class TbTerrain {
      * @return {Terrain[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -306,7 +306,7 @@ export class TbTerrain {
      * @return {TbTerrain} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 

@@ -30,6 +30,44 @@ function assert(condition, message) {
     }
 }
 
+// Convert camelCase to snake_case
+function camelToSnake(str) {
+    return str.replace(/([A-Z])/g, '_$1').toLowerCase();
+}
+
+// Convert snake_case to camelCase
+function snakeToCamel(str) {
+    return str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+}
+
+// Convert object keys from camelCase to snake_case
+function camelKeysToSnake(obj) {
+    if (obj === null || typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) {
+        return obj.map(camelKeysToSnake);
+    }
+    const result = {};
+    for (const [key, value] of Object.entries(obj)) {
+        const snakeKey = camelToSnake(key);
+        result[snakeKey] = camelKeysToSnake(value);
+    }
+    return result;
+}
+
+// Convert object keys from snake_case to camelCase
+function snakeKeysToCamel(obj) {
+    if (obj === null || typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) {
+        return obj.map(snakeKeysToCamel);
+    }
+    const result = {};
+    for (const [key, value] of Object.entries(obj)) {
+        const camelKey = snakeToCamel(key);
+        result[camelKey] = snakeKeysToCamel(value);
+    }
+    return result;
+}
+
 async function loadProtobufMessages() {
     const root = new protobuf.Root();
 
@@ -148,8 +186,10 @@ async function testOurJsonToProtobufJs() {
 
         const ourPlayerJson = toJson(ourPlayer);
         const jsonObjPlayer = JSON.parse(ourPlayerJson);
+        // Convert camelCase keys to snake_case for protobuf.js
+        const snakeCaseJson = camelKeysToSnake(jsonObjPlayer);
 
-        const pbPlayer = playerType.fromObject(jsonObjPlayer);
+        const pbPlayer = playerType.fromObject(snakeCaseJson);
         assert(pbPlayer.id === 123, `protobuf.js decoded id = ${pbPlayer.id}`);
         assert(pbPlayer.name === 'Test Player', `protobuf.js decoded name = ${pbPlayer.name}`);
         assert(pbPlayer.walk_speed === 5.0, `protobuf.js decoded walk_speed = ${pbPlayer.walk_speed}`);
@@ -217,8 +257,8 @@ async function testProtobufJsToOurJson() {
         const ourPlayer = fromJson(Player, pbPlayerObject);
         assert(ourPlayer.getId() === 999, `Our class parsed id = ${ourPlayer.getId()}`);
         assert(ourPlayer.getName() === 'Protobuf Player', `Our class parsed name = ${ourPlayer.getName()}`);
-        assert(ourPlayer.getWalkSpeed() === 7.5, `Our class parsed walk_speed = ${ourPlayer.getWalkSpeed()}`);
-        assert(ourPlayer.getResourceId() === 2, `Our class parsed resource_id = ${ourPlayer.getResourceId()}`);
+        assert(ourPlayer.getWalkSpeed() === 7.5, `Our class parsed walkSpeed = ${ourPlayer.getWalkSpeed()}`);
+        assert(ourPlayer.getResourceId() === 2, `Our class parsed resourceId = ${ourPlayer.getResourceId()}`);
 
         console.log('✅ Player reverse compatibility test passed');
     } catch (error) {
@@ -316,7 +356,7 @@ async function testRepeatedFieldCompatibility() {
     const ourTbPlayer = fromJson(TbPlayer, pbTbPlayerObject);
     const ourPlayers = ourTbPlayer.getDataList();
 
-    assert(Array.isArray(ourPlayers), 'data_list is array');
+    assert(Array.isArray(ourPlayers), 'dataList is array');
     assert(ourPlayers.length === 3, `Array length = ${ourPlayers.length}`);
     assert(ourPlayers[0].getId() === 1, `First player id = ${ourPlayers[0].getId()}`);
     assert(ourPlayers[1].getName() === 'Player 2', `Second player name = ${ourPlayers[1].getName()}`);
@@ -337,8 +377,10 @@ async function testRepeatedFieldCompatibility() {
 
     const ourTbPlayerJson = toJson(ourTbPlayer2);
     const ourTbPlayerObj = JSON.parse(ourTbPlayerJson);
+    // Convert camelCase keys to snake_case for protobuf.js
+    const snakeCaseObj = camelKeysToSnake(ourTbPlayerObj);
 
-    const pbTbPlayer2 = tbPlayerType.fromObject(ourTbPlayerObj);
+    const pbTbPlayer2 = tbPlayerType.fromObject(snakeCaseObj);
     assert(Array.isArray(pbTbPlayer2.data_list), 'protobuf.js data_list is array');
     assert(pbTbPlayer2.data_list.length === 2, `protobuf.js array length = ${pbTbPlayer2.data_list.length}`);
     assert(pbTbPlayer2.data_list[0].id === 10, `protobuf.js first player id = ${pbTbPlayer2.data_list[0].id}`);

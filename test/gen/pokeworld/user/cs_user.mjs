@@ -28,7 +28,7 @@ export class RegisterRequest {
         package: "pokeworld.user.cs",
         fields: [
             {name: "email", number: 1, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "user_name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "userName", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "password", number: 3, type: "TYPE_STRING", label: "LABEL_OPTIONAL"}
         ]
     }
@@ -53,7 +53,7 @@ export class RegisterRequest {
      * @return {string} 
      */
     getUserName() {
-        return this.user_name;
+        return this.userName;
     }
 
     /** 
@@ -61,7 +61,7 @@ export class RegisterRequest {
      * @return {RegisterRequest} 
      */
     setUserName(value) {
-        this.user_name = value;
+        this.userName = value;
         return this;
     }
 
@@ -198,7 +198,7 @@ export class EnterServerRequest {
         fullName: "pokeworld.user.cs.EnterServerRequest",
         package: "pokeworld.user.cs",
         fields: [
-            {name: "server_id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
+            {name: "serverId", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -206,7 +206,7 @@ export class EnterServerRequest {
      * @return {number} 
      */
     getServerId() {
-        return this.server_id;
+        return this.serverId;
     }
 
     /** 
@@ -214,7 +214,7 @@ export class EnterServerRequest {
      * @return {EnterServerRequest} 
      */
     setServerId(value) {
-        this.server_id = value;
+        this.serverId = value;
         return this;
     }
 
@@ -394,7 +394,7 @@ export class GetCreatedPlayersResponse {
         package: "pokeworld.user.cs",
         fields: [
             {name: "success", number: 1, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
-            {name: "entity_ids", number: 2, type: "TYPE_UINT64", label: "LABEL_REPEATED"}
+            {name: "entityIds", number: 2, type: "TYPE_UINT64", label: "LABEL_REPEATED"}
         ]
     }
 
@@ -418,7 +418,7 @@ export class GetCreatedPlayersResponse {
      * @return {number[]} 
      */
     getEntityIds() {
-        return this.entity_ids;
+        return this.entityIds;
     }
 
     /** 
@@ -426,7 +426,7 @@ export class GetCreatedPlayersResponse {
      * @return {GetCreatedPlayersResponse} 
      */
     setEntityIds(value) {
-        this.entity_ids = value;
+        this.entityIds = value;
         return this;
     }
 

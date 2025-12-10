@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Protocol Buffers (protoc) plugin written in C++ that generates JavaScript classes from `.proto` files. The plugin follows the "Option B" design described in `Protobuf生成JS方案.md`: it creates JavaScript classes with getter/setter methods that convert between camelCase (JavaScript) and snake_case (protobuf) naming conventions. The generated classes support fluent/chained method calls (each setter returns `this`) and can be directly serialized to JSON.
+This is a Protocol Buffers (protoc) plugin written in C++ that generates JavaScript classes from `.proto` files. The plugin follows the "Option B" design described in `Protobuf生成JS方案.md`: it creates JavaScript classes with getter/setter methods. The generated classes support fluent/chained method calls (each setter returns `this`) and can be directly serialized to JSON. Member variables use camelCase naming (e.g., `walkSpeed`) to match JavaScript conventions, and JSON serialization also uses camelCase keys.
 
 The plugin is built as a standalone executable that protoc invokes via the `--plugin` option. The generated code uses ES modules (`.mjs` files).
 
@@ -57,12 +57,19 @@ A test suite is provided in the `test/` directory:
    - Invokes `protoc` with the built plugin
    - Generates JavaScript modules in `test/gen/`
 
-4. **View the streaming example**:
+4. **Run the test suite**:
    ```bash
-   node test/streaming-example.mjs
+   node test/test.mjs
    ```
 
-   This demonstrates usage of the generated classes with fluent method chaining.
+   This runs comprehensive tests for serialization, deserialization, and error handling.
+
+5. **Run compatibility tests** (optional):
+   ```bash
+   node test/test-protobuf-compatibility.mjs
+   ```
+
+   This tests bidirectional compatibility with the protobuf.js library.
 
 ## Architecture
 
@@ -78,6 +85,9 @@ The plugin follows the standard protoc plugin interface:
 ### Key Design Decisions
 
 - **Getter/setter methods**: Each protobuf field generates a `getFieldName()` and `setFieldName(value)` method. Setters return `this` to enable fluent chaining.
+- **CamelCase member variables**: Member variables use camelCase naming (e.g., `walkSpeed`) to match JavaScript conventions, with snake_case field names automatically converted.
+- **CamelCase JSON serialization**: JSON serialization uses camelCase keys, matching the standard Protobuf JSON serialization format.
+- **Backward compatibility**: The `fromJson` function supports both camelCase and snake_case JSON keys for compatibility with existing systems.
 - **Import aliasing**: To avoid naming conflicts, imported types are given aliases based on their proto file path (e.g., `import { Vector3 as __core_math_Vector3 } from './core/math.mjs'`).
 - **Nested messages**: Nested messages are generated as separate classes attached to the parent class (e.g., `OuterClass.InnerClass`).
 - **Enums**: Generated as plain JavaScript objects with numeric values.
@@ -130,5 +140,6 @@ To use the plugin in another project:
 - The plugin currently only supports proto3 syntax.
 - Map types are not fully typed in the generated JavaScript (they appear as `any`).
 - The plugin is designed for Node.js/ES module environments; no CommonJS version is generated.
+- JSON serialization uses camelCase keys, and the `fromJson` helper supports both camelCase and snake_case for backward compatibility.
 
 Refer to `Protobuf生成JS方案.md` (in Chinese) for the design rationale and trade‑offs between different generation strategies.

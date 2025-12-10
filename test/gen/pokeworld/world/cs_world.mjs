@@ -112,10 +112,10 @@ export class PlayerSync {
         fullName: "pokeworld.world.cs.PlayerSync",
         package: "pokeworld.world.cs",
         fields: [
-            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", get clrType() { return __PokeworldEntityComm_entity.EntityInfo; },label: "LABEL_OPTIONAL"},
-            {name: "entity_transform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", get clrType() { return __PokeworldEntityComm_entity.EntityTransform; },label: "LABEL_OPTIONAL"},
-            {name: "actor_transform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", get clrType() { return __PokeworldEntityComm_entity.ActorTransform; },label: "LABEL_OPTIONAL"},
-            {name: "actor_state", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", get clrType() { return __PokeworldEntityComm_entity.ActorState; },label: "LABEL_OPTIONAL"}
+            {name: "entityInfo", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", get clrType() { return __PokeworldEntityComm_entity.EntityInfo; },label: "LABEL_OPTIONAL"},
+            {name: "entityTransform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", get clrType() { return __PokeworldEntityComm_entity.EntityTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actorTransform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", get clrType() { return __PokeworldEntityComm_entity.ActorTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actorState", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", get clrType() { return __PokeworldEntityComm_entity.ActorState; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -123,7 +123,7 @@ export class PlayerSync {
      * @return {__PokeworldEntityComm_entity.EntityInfo} 
      */
     getEntityInfo() {
-        return this.entity_info;
+        return this.entityInfo;
     }
 
     /** 
@@ -131,7 +131,7 @@ export class PlayerSync {
      * @return {PlayerSync} 
      */
     setEntityInfo(value) {
-        this.entity_info = value;
+        this.entityInfo = value;
         return this;
     }
 
@@ -139,7 +139,7 @@ export class PlayerSync {
      * @return {__PokeworldEntityComm_entity.EntityTransform} 
      */
     getEntityTransform() {
-        return this.entity_transform;
+        return this.entityTransform;
     }
 
     /** 
@@ -147,7 +147,7 @@ export class PlayerSync {
      * @return {PlayerSync} 
      */
     setEntityTransform(value) {
-        this.entity_transform = value;
+        this.entityTransform = value;
         return this;
     }
 
@@ -155,7 +155,7 @@ export class PlayerSync {
      * @return {__PokeworldEntityComm_entity.ActorTransform} 
      */
     getActorTransform() {
-        return this.actor_transform;
+        return this.actorTransform;
     }
 
     /** 
@@ -163,7 +163,7 @@ export class PlayerSync {
      * @return {PlayerSync} 
      */
     setActorTransform(value) {
-        this.actor_transform = value;
+        this.actorTransform = value;
         return this;
     }
 
@@ -171,7 +171,7 @@ export class PlayerSync {
      * @return {__PokeworldEntityComm_entity.ActorState} 
      */
     getActorState() {
-        return this.actor_state;
+        return this.actorState;
     }
 
     /** 
@@ -179,7 +179,7 @@ export class PlayerSync {
      * @return {PlayerSync} 
      */
     setActorState(value) {
-        this.actor_state = value;
+        this.actorState = value;
         return this;
     }
 
@@ -193,10 +193,10 @@ export class NpcSync {
         fullName: "pokeworld.world.cs.NpcSync",
         package: "pokeworld.world.cs",
         fields: [
-            {name: "entity_info", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", get clrType() { return __PokeworldEntityComm_entity.EntityInfo; },label: "LABEL_OPTIONAL"},
-            {name: "entity_transform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", get clrType() { return __PokeworldEntityComm_entity.EntityTransform; },label: "LABEL_OPTIONAL"},
-            {name: "actor_transform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", get clrType() { return __PokeworldEntityComm_entity.ActorTransform; },label: "LABEL_OPTIONAL"},
-            {name: "actor_state", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", get clrType() { return __PokeworldEntityComm_entity.ActorState; },label: "LABEL_OPTIONAL"}
+            {name: "entityInfo", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityInfo", get clrType() { return __PokeworldEntityComm_entity.EntityInfo; },label: "LABEL_OPTIONAL"},
+            {name: "entityTransform", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.EntityTransform", get clrType() { return __PokeworldEntityComm_entity.EntityTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actorTransform", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorTransform", get clrType() { return __PokeworldEntityComm_entity.ActorTransform; },label: "LABEL_OPTIONAL"},
+            {name: "actorState", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.entity.comm.ActorState", get clrType() { return __PokeworldEntityComm_entity.ActorState; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -204,7 +204,7 @@ export class NpcSync {
      * @return {__PokeworldEntityComm_entity.EntityInfo} 
      */
     getEntityInfo() {
-        return this.entity_info;
+        return this.entityInfo;
     }
 
     /** 
@@ -212,7 +212,7 @@ export class NpcSync {
      * @return {NpcSync} 
      */
     setEntityInfo(value) {
-        this.entity_info = value;
+        this.entityInfo = value;
         return this;
     }
 
@@ -220,7 +220,7 @@ export class NpcSync {
      * @return {__PokeworldEntityComm_entity.EntityTransform} 
      */
     getEntityTransform() {
-        return this.entity_transform;
+        return this.entityTransform;
     }
 
     /** 
@@ -228,7 +228,7 @@ export class NpcSync {
      * @return {NpcSync} 
      */
     setEntityTransform(value) {
-        this.entity_transform = value;
+        this.entityTransform = value;
         return this;
     }
 
@@ -236,7 +236,7 @@ export class NpcSync {
      * @return {__PokeworldEntityComm_entity.ActorTransform} 
      */
     getActorTransform() {
-        return this.actor_transform;
+        return this.actorTransform;
     }
 
     /** 
@@ -244,7 +244,7 @@ export class NpcSync {
      * @return {NpcSync} 
      */
     setActorTransform(value) {
-        this.actor_transform = value;
+        this.actorTransform = value;
         return this;
     }
 
@@ -252,7 +252,7 @@ export class NpcSync {
      * @return {__PokeworldEntityComm_entity.ActorState} 
      */
     getActorState() {
-        return this.actor_state;
+        return this.actorState;
     }
 
     /** 
@@ -260,7 +260,7 @@ export class NpcSync {
      * @return {NpcSync} 
      */
     setActorState(value) {
-        this.actor_state = value;
+        this.actorState = value;
         return this;
     }
 

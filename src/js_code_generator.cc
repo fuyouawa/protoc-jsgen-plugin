@@ -358,8 +358,9 @@ void JsCodeGenerator::GenerateMessage(
         output_ << "\n";
         for (int i = 0; i < message_type.field_size(); ++i) {
             const FieldDescriptorProto& field = message_type.field(i);
+            std::string camel_case_name = SnakeToCamelCase(field.name());
             output_ << indent << "            {";
-            output_ << "name: \"" << field.name() << "\", ";
+            output_ << "name: \"" << camel_case_name << "\", ";
             output_ << "number: " << field.number() << ", ";
             output_ << "type: \"" << FieldDescriptorProto::Type_Name(field.type()) << "\", ";
             if (!field.type_name().empty()) {
@@ -440,8 +441,9 @@ std::string JsCodeGenerator::GenerateNestedMessageClass(
         output_ << "\n";
         for (int i = 0; i < message_type.field_size(); ++i) {
             const FieldDescriptorProto& field = message_type.field(i);
+            std::string camel_case_name = SnakeToCamelCase(field.name());
             output_ << "            {";
-            output_ << "name: \"" << field.name() << "\", ";
+            output_ << "name: \"" << camel_case_name << "\", ";
             output_ << "number: " << field.number() << ", ";
             output_ << "type: \"" << FieldDescriptorProto::Type_Name(field.type()) << "\", ";
             if (!field.type_name().empty()) {
@@ -539,7 +541,7 @@ void JsCodeGenerator::GenerateFieldMethods(
     output_ << indent << " * @return {" << js_type << "} \n";
     output_ << indent << " */\n";
     output_ << indent << "get" << TypeHelper::GetMethodName(field) << "() {\n";
-    output_ << indent << "    return this." << field_name << ";\n";
+    output_ << indent << "    return this." << camel_case_name << ";\n";
     output_ << indent << "}\n\n";
 
     // Setter method (supports fluent chaining)
@@ -548,7 +550,7 @@ void JsCodeGenerator::GenerateFieldMethods(
     output_ << indent << " * @return {" << class_name << "} \n";
     output_ << indent << " */\n";
     output_ << indent << "set" << TypeHelper::GetMethodName(field) << "(value) {\n";
-    output_ << indent << "    this." << field_name << " = value;\n";
+    output_ << indent << "    this." << camel_case_name << " = value;\n";
     output_ << indent << "    return this;\n";
     output_ << indent << "}\n\n";
 }

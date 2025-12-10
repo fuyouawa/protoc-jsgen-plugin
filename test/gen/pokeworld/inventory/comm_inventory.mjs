@@ -19,8 +19,8 @@ export class Slot {
         fullName: "pokeworld.inventory.comm.Slot",
         package: "pokeworld.inventory.comm",
         fields: [
-            {name: "item_id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "item_num", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
+            {name: "itemId", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
+            {name: "itemNum", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -28,7 +28,7 @@ export class Slot {
      * @return {number} 
      */
     getItemId() {
-        return this.item_id;
+        return this.itemId;
     }
 
     /** 
@@ -36,7 +36,7 @@ export class Slot {
      * @return {Slot} 
      */
     setItemId(value) {
-        this.item_id = value;
+        this.itemId = value;
         return this;
     }
 
@@ -44,7 +44,7 @@ export class Slot {
      * @return {number} 
      */
     getItemNum() {
-        return this.item_num;
+        return this.itemNum;
     }
 
     /** 
@@ -52,7 +52,7 @@ export class Slot {
      * @return {Slot} 
      */
     setItemNum(value) {
-        this.item_num = value;
+        this.itemNum = value;
         return this;
     }
 
@@ -112,8 +112,8 @@ export class Inventory {
         package: "pokeworld.inventory.comm",
         fields: [
             {name: "tab", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.inventory.comm.Tab", get clrType() { return Tab; },label: "LABEL_OPTIONAL"},
-            {name: "max_slot", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "slot_map", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory.SlotMapEntry", get clrType() { return __Inventory_SlotMapEntry; },label: "LABEL_REPEATED"}
+            {name: "maxSlot", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
+            {name: "slotMap", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.inventory.comm.Inventory.SlotMapEntry", get clrType() { return __Inventory_SlotMapEntry; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -137,7 +137,7 @@ export class Inventory {
      * @return {number} 
      */
     getMaxSlot() {
-        return this.max_slot;
+        return this.maxSlot;
     }
 
     /** 
@@ -145,7 +145,7 @@ export class Inventory {
      * @return {Inventory} 
      */
     setMaxSlot(value) {
-        this.max_slot = value;
+        this.maxSlot = value;
         return this;
     }
 
@@ -153,7 +153,7 @@ export class Inventory {
      * @return {any} 
      */
     getSlotMap() {
-        return this.slot_map;
+        return this.slotMap;
     }
 
     /** 
@@ -161,7 +161,7 @@ export class Inventory {
      * @return {Inventory} 
      */
     setSlotMap(value) {
-        this.slot_map = value;
+        this.slotMap = value;
         return this;
     }
 

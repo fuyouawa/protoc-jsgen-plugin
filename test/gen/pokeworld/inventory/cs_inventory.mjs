@@ -82,8 +82,8 @@ export class SwapSlotRequest {
         fullName: "pokeworld.inventory.cs.SwapSlotRequest",
         package: "pokeworld.inventory.cs",
         fields: [
-            {name: "src_slot_id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "dest_slot_id", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
+            {name: "srcSlotId", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
+            {name: "destSlotId", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -91,7 +91,7 @@ export class SwapSlotRequest {
      * @return {number} 
      */
     getSrcSlotId() {
-        return this.src_slot_id;
+        return this.srcSlotId;
     }
 
     /** 
@@ -99,7 +99,7 @@ export class SwapSlotRequest {
      * @return {SwapSlotRequest} 
      */
     setSrcSlotId(value) {
-        this.src_slot_id = value;
+        this.srcSlotId = value;
         return this;
     }
 
@@ -107,7 +107,7 @@ export class SwapSlotRequest {
      * @return {number} 
      */
     getDestSlotId() {
-        return this.dest_slot_id;
+        return this.destSlotId;
     }
 
     /** 
@@ -115,7 +115,7 @@ export class SwapSlotRequest {
      * @return {SwapSlotRequest} 
      */
     setDestSlotId(value) {
-        this.dest_slot_id = value;
+        this.destSlotId = value;
         return this;
     }
 

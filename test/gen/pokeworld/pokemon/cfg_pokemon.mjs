@@ -49,23 +49,23 @@ export class Move {
             {name: "num", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 3, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "gen", number: 4, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "base_power", number: 5, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
+            {name: "basePower", number: 5, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "pp", number: 6, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "type", number: 7, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", get clrType() { return PokeType; },label: "LABEL_OPTIONAL"},
             {name: "category", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.MoveCategory", get clrType() { return MoveCategory; },label: "LABEL_OPTIONAL"},
             {name: "target", number: 9, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "accuracy", number: 10, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "crit_ratio", number: 11, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
+            {name: "critRatio", number: 11, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "secondaries", number: 12, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "priority", number: 13, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "ignore_offensive", number: 14, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "ignore_defensive", number: 15, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "ignore_immunity", number: 16, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "ignore_evasion", number: 17, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "has_sheer_force", number: 18, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
-            {name: "no_pp_boosts", number: 19, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
-            {name: "ignore_ability", number: 20, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
-            {name: "z_move", number: 21, type: "TYPE_STRING", label: "LABEL_OPTIONAL"}
+            {name: "ignoreOffensive", number: 14, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "ignoreDefensive", number: 15, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "ignoreImmunity", number: 16, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "ignoreEvasion", number: 17, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "hasSheerForce", number: 18, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
+            {name: "noPpBoosts", number: 19, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
+            {name: "ignoreAbility", number: 20, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
+            {name: "zMove", number: 21, type: "TYPE_STRING", label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -137,7 +137,7 @@ export class Move {
      * @return {number} 
      */
     getBasePower() {
-        return this.base_power;
+        return this.basePower;
     }
 
     /** 
@@ -145,7 +145,7 @@ export class Move {
      * @return {Move} 
      */
     setBasePower(value) {
-        this.base_power = value;
+        this.basePower = value;
         return this;
     }
 
@@ -233,7 +233,7 @@ export class Move {
      * @return {number} 
      */
     getCritRatio() {
-        return this.crit_ratio;
+        return this.critRatio;
     }
 
     /** 
@@ -241,7 +241,7 @@ export class Move {
      * @return {Move} 
      */
     setCritRatio(value) {
-        this.crit_ratio = value;
+        this.critRatio = value;
         return this;
     }
 
@@ -281,7 +281,7 @@ export class Move {
      * @return {string} 
      */
     getIgnoreOffensive() {
-        return this.ignore_offensive;
+        return this.ignoreOffensive;
     }
 
     /** 
@@ -289,7 +289,7 @@ export class Move {
      * @return {Move} 
      */
     setIgnoreOffensive(value) {
-        this.ignore_offensive = value;
+        this.ignoreOffensive = value;
         return this;
     }
 
@@ -297,7 +297,7 @@ export class Move {
      * @return {string} 
      */
     getIgnoreDefensive() {
-        return this.ignore_defensive;
+        return this.ignoreDefensive;
     }
 
     /** 
@@ -305,7 +305,7 @@ export class Move {
      * @return {Move} 
      */
     setIgnoreDefensive(value) {
-        this.ignore_defensive = value;
+        this.ignoreDefensive = value;
         return this;
     }
 
@@ -313,7 +313,7 @@ export class Move {
      * @return {string} 
      */
     getIgnoreImmunity() {
-        return this.ignore_immunity;
+        return this.ignoreImmunity;
     }
 
     /** 
@@ -321,7 +321,7 @@ export class Move {
      * @return {Move} 
      */
     setIgnoreImmunity(value) {
-        this.ignore_immunity = value;
+        this.ignoreImmunity = value;
         return this;
     }
 
@@ -329,7 +329,7 @@ export class Move {
      * @return {string} 
      */
     getIgnoreEvasion() {
-        return this.ignore_evasion;
+        return this.ignoreEvasion;
     }
 
     /** 
@@ -337,7 +337,7 @@ export class Move {
      * @return {Move} 
      */
     setIgnoreEvasion(value) {
-        this.ignore_evasion = value;
+        this.ignoreEvasion = value;
         return this;
     }
 
@@ -345,7 +345,7 @@ export class Move {
      * @return {boolean} 
      */
     getHasSheerForce() {
-        return this.has_sheer_force;
+        return this.hasSheerForce;
     }
 
     /** 
@@ -353,7 +353,7 @@ export class Move {
      * @return {Move} 
      */
     setHasSheerForce(value) {
-        this.has_sheer_force = value;
+        this.hasSheerForce = value;
         return this;
     }
 
@@ -361,7 +361,7 @@ export class Move {
      * @return {boolean} 
      */
     getNoPpBoosts() {
-        return this.no_pp_boosts;
+        return this.noPpBoosts;
     }
 
     /** 
@@ -369,7 +369,7 @@ export class Move {
      * @return {Move} 
      */
     setNoPpBoosts(value) {
-        this.no_pp_boosts = value;
+        this.noPpBoosts = value;
         return this;
     }
 
@@ -377,7 +377,7 @@ export class Move {
      * @return {boolean} 
      */
     getIgnoreAbility() {
-        return this.ignore_ability;
+        return this.ignoreAbility;
     }
 
     /** 
@@ -385,7 +385,7 @@ export class Move {
      * @return {Move} 
      */
     setIgnoreAbility(value) {
-        this.ignore_ability = value;
+        this.ignoreAbility = value;
         return this;
     }
 
@@ -393,7 +393,7 @@ export class Move {
      * @return {string} 
      */
     getZMove() {
-        return this.z_move;
+        return this.zMove;
     }
 
     /** 
@@ -401,7 +401,7 @@ export class Move {
      * @return {Move} 
      */
     setZMove(value) {
-        this.z_move = value;
+        this.zMove = value;
         return this;
     }
 
@@ -419,19 +419,19 @@ export class Pokemon {
             {name: "num", number: 2, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 3, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "gen", number: 4, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
-            {name: "base_forme", number: 5, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "other_formes", number: 6, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "baseForme", number: 5, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "otherFormes", number: 6, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "abilities", number: 7, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "poke_types", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", get clrType() { return PokeType; },label: "LABEL_REPEATED"},
+            {name: "pokeTypes", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", get clrType() { return PokeType; },label: "LABEL_REPEATED"},
             {name: "prevo", number: 9, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "evos", number: 10, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "evo_level", number: 11, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
+            {name: "evoLevel", number: 11, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "tier", number: 12, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "doubles_tier", number: 13, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "nat_dex_tier", number: 14, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "egg_groups", number: 15, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "can_hatch", number: 16, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
-            {name: "gender_ratio", number: 17, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "doublesTier", number: 13, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "natDexTier", number: 14, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "eggGroups", number: 15, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "canHatch", number: 16, type: "TYPE_BOOL", label: "LABEL_OPTIONAL"},
+            {name: "genderRatio", number: 17, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
             {name: "hp", number: 18, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "atk", number: 19, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "def", number: 20, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
@@ -440,8 +440,8 @@ export class Pokemon {
             {name: "spe", number: 23, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "weight", number: 24, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
             {name: "height", number: 25, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
-            {name: "front_atlas_asset_adress", number: 26, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return __PokeworldResourceCfg_resource.AssetAddress; },label: "LABEL_OPTIONAL"},
-            {name: "back_atlas_asset_adress", number: 27, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return __PokeworldResourceCfg_resource.AssetAddress; },label: "LABEL_OPTIONAL"}
+            {name: "frontAtlasAssetAdress", number: 26, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return __PokeworldResourceCfg_resource.AssetAddress; },label: "LABEL_OPTIONAL"},
+            {name: "backAtlasAssetAdress", number: 27, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.AssetAddress", get clrType() { return __PokeworldResourceCfg_resource.AssetAddress; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -513,7 +513,7 @@ export class Pokemon {
      * @return {string} 
      */
     getBaseForme() {
-        return this.base_forme;
+        return this.baseForme;
     }
 
     /** 
@@ -521,7 +521,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setBaseForme(value) {
-        this.base_forme = value;
+        this.baseForme = value;
         return this;
     }
 
@@ -529,7 +529,7 @@ export class Pokemon {
      * @return {string} 
      */
     getOtherFormes() {
-        return this.other_formes;
+        return this.otherFormes;
     }
 
     /** 
@@ -537,7 +537,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setOtherFormes(value) {
-        this.other_formes = value;
+        this.otherFormes = value;
         return this;
     }
 
@@ -561,7 +561,7 @@ export class Pokemon {
      * @return {PokeType[]} 
      */
     getPokeTypes() {
-        return this.poke_types;
+        return this.pokeTypes;
     }
 
     /** 
@@ -569,7 +569,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setPokeTypes(value) {
-        this.poke_types = value;
+        this.pokeTypes = value;
         return this;
     }
 
@@ -609,7 +609,7 @@ export class Pokemon {
      * @return {number} 
      */
     getEvoLevel() {
-        return this.evo_level;
+        return this.evoLevel;
     }
 
     /** 
@@ -617,7 +617,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setEvoLevel(value) {
-        this.evo_level = value;
+        this.evoLevel = value;
         return this;
     }
 
@@ -641,7 +641,7 @@ export class Pokemon {
      * @return {string} 
      */
     getDoublesTier() {
-        return this.doubles_tier;
+        return this.doublesTier;
     }
 
     /** 
@@ -649,7 +649,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setDoublesTier(value) {
-        this.doubles_tier = value;
+        this.doublesTier = value;
         return this;
     }
 
@@ -657,7 +657,7 @@ export class Pokemon {
      * @return {string} 
      */
     getNatDexTier() {
-        return this.nat_dex_tier;
+        return this.natDexTier;
     }
 
     /** 
@@ -665,7 +665,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setNatDexTier(value) {
-        this.nat_dex_tier = value;
+        this.natDexTier = value;
         return this;
     }
 
@@ -673,7 +673,7 @@ export class Pokemon {
      * @return {string} 
      */
     getEggGroups() {
-        return this.egg_groups;
+        return this.eggGroups;
     }
 
     /** 
@@ -681,7 +681,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setEggGroups(value) {
-        this.egg_groups = value;
+        this.eggGroups = value;
         return this;
     }
 
@@ -689,7 +689,7 @@ export class Pokemon {
      * @return {boolean} 
      */
     getCanHatch() {
-        return this.can_hatch;
+        return this.canHatch;
     }
 
     /** 
@@ -697,7 +697,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setCanHatch(value) {
-        this.can_hatch = value;
+        this.canHatch = value;
         return this;
     }
 
@@ -705,7 +705,7 @@ export class Pokemon {
      * @return {string} 
      */
     getGenderRatio() {
-        return this.gender_ratio;
+        return this.genderRatio;
     }
 
     /** 
@@ -713,7 +713,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setGenderRatio(value) {
-        this.gender_ratio = value;
+        this.genderRatio = value;
         return this;
     }
 
@@ -849,7 +849,7 @@ export class Pokemon {
      * @return {__PokeworldResourceCfg_resource.AssetAddress} 
      */
     getFrontAtlasAssetAdress() {
-        return this.front_atlas_asset_adress;
+        return this.frontAtlasAssetAdress;
     }
 
     /** 
@@ -857,7 +857,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setFrontAtlasAssetAdress(value) {
-        this.front_atlas_asset_adress = value;
+        this.frontAtlasAssetAdress = value;
         return this;
     }
 
@@ -865,7 +865,7 @@ export class Pokemon {
      * @return {__PokeworldResourceCfg_resource.AssetAddress} 
      */
     getBackAtlasAssetAdress() {
-        return this.back_atlas_asset_adress;
+        return this.backAtlasAssetAdress;
     }
 
     /** 
@@ -873,7 +873,7 @@ export class Pokemon {
      * @return {Pokemon} 
      */
     setBackAtlasAssetAdress(value) {
-        this.back_atlas_asset_adress = value;
+        this.backAtlasAssetAdress = value;
         return this;
     }
 
@@ -889,7 +889,7 @@ export class PokeTypeInfo {
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "type", number: 2, type: "TYPE_ENUM", typeName: ".pokeworld.pokemon.cfg.PokeType", get clrType() { return PokeType; },label: "LABEL_OPTIONAL"},
-            {name: "atlas_index", number: 3, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
+            {name: "atlasIndex", number: 3, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "color", number: 4, type: "TYPE_STRING", label: "LABEL_OPTIONAL"}
         ]
     }
@@ -930,7 +930,7 @@ export class PokeTypeInfo {
      * @return {number} 
      */
     getAtlasIndex() {
-        return this.atlas_index;
+        return this.atlasIndex;
     }
 
     /** 
@@ -938,7 +938,7 @@ export class PokeTypeInfo {
      * @return {PokeTypeInfo} 
      */
     setAtlasIndex(value) {
-        this.atlas_index = value;
+        this.atlasIndex = value;
         return this;
     }
 
@@ -968,7 +968,7 @@ export class TbPokemon {
         fullName: "pokeworld.pokemon.cfg.TbPokemon",
         package: "pokeworld.pokemon.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Pokemon", get clrType() { return Pokemon; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Pokemon", get clrType() { return Pokemon; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -976,7 +976,7 @@ export class TbPokemon {
      * @return {Pokemon[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -984,7 +984,7 @@ export class TbPokemon {
      * @return {TbPokemon} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 
@@ -998,7 +998,7 @@ export class TbMove {
         fullName: "pokeworld.pokemon.cfg.TbMove",
         package: "pokeworld.pokemon.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Move", get clrType() { return Move; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.Move", get clrType() { return Move; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -1006,7 +1006,7 @@ export class TbMove {
      * @return {Move[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -1014,7 +1014,7 @@ export class TbMove {
      * @return {TbMove} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 
@@ -1028,7 +1028,7 @@ export class TbPokeTypeInfo {
         fullName: "pokeworld.pokemon.cfg.TbPokeTypeInfo",
         package: "pokeworld.pokemon.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.PokeTypeInfo", get clrType() { return PokeTypeInfo; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.PokeTypeInfo", get clrType() { return PokeTypeInfo; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -1036,7 +1036,7 @@ export class TbPokeTypeInfo {
      * @return {PokeTypeInfo[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -1044,7 +1044,7 @@ export class TbPokeTypeInfo {
      * @return {TbPokeTypeInfo} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 

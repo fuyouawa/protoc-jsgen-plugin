@@ -68,7 +68,7 @@ export class ActorInfo {
         fullName: "pokeworld.entity.comm.ActorInfo",
         package: "pokeworld.entity.comm",
         fields: [
-            {name: "cfg_id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
+            {name: "cfgId", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -76,7 +76,7 @@ export class ActorInfo {
      * @return {number} 
      */
     getCfgId() {
-        return this.cfg_id;
+        return this.cfgId;
     }
 
     /** 
@@ -84,7 +84,7 @@ export class ActorInfo {
      * @return {ActorInfo} 
      */
     setCfgId(value) {
-        this.cfg_id = value;
+        this.cfgId = value;
         return this;
     }
 
@@ -218,7 +218,7 @@ export class ActorState {
         fullName: "pokeworld.entity.comm.ActorState",
         package: "pokeworld.entity.comm",
         fields: [
-            {name: "motion_state", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.MotionState", get clrType() { return MotionState; },label: "LABEL_OPTIONAL"}
+            {name: "motionState", number: 1, type: "TYPE_ENUM", typeName: ".pokeworld.entity.comm.MotionState", get clrType() { return MotionState; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -226,7 +226,7 @@ export class ActorState {
      * @return {MotionState} 
      */
     getMotionState() {
-        return this.motion_state;
+        return this.motionState;
     }
 
     /** 
@@ -234,7 +234,7 @@ export class ActorState {
      * @return {ActorState} 
      */
     setMotionState(value) {
-        this.motion_state = value;
+        this.motionState = value;
         return this;
     }
 

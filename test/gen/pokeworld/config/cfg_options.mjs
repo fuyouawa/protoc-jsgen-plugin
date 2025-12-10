@@ -11,8 +11,8 @@ export class FieldOptionsTableLoader {
         fullName: "pokeworld.config.cfg.FieldOptionsTableLoader",
         package: "pokeworld.config.cfg",
         fields: [
-            {name: "table_name", number: 1, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "data_file_name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"}
+            {name: "tableName", number: 1, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
+            {name: "dataFileName", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -20,7 +20,7 @@ export class FieldOptionsTableLoader {
      * @return {string} 
      */
     getTableName() {
-        return this.table_name;
+        return this.tableName;
     }
 
     /** 
@@ -28,7 +28,7 @@ export class FieldOptionsTableLoader {
      * @return {FieldOptionsTableLoader} 
      */
     setTableName(value) {
-        this.table_name = value;
+        this.tableName = value;
         return this;
     }
 
@@ -36,7 +36,7 @@ export class FieldOptionsTableLoader {
      * @return {string} 
      */
     getDataFileName() {
-        return this.data_file_name;
+        return this.dataFileName;
     }
 
     /** 
@@ -44,7 +44,7 @@ export class FieldOptionsTableLoader {
      * @return {FieldOptionsTableLoader} 
      */
     setDataFileName(value) {
-        this.data_file_name = value;
+        this.dataFileName = value;
         return this;
     }
 

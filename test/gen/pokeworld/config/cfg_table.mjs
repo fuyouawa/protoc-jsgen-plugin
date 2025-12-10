@@ -17,14 +17,14 @@ export class Tables {
         fullName: "pokeworld.config.cfg.Tables",
         package: "pokeworld.config.cfg",
         fields: [
-            {name: "actor_cfg_tbplayer", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.TbPlayer", get clrType() { return __PokeworldActorCfg_actor.TbPlayer; },label: "LABEL_OPTIONAL"},
-            {name: "network_cfg_tbserver", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.TbServer", get clrType() { return __PokeworldNetworkCfg_network.TbServer; },label: "LABEL_OPTIONAL"},
-            {name: "pokemon_cfg_tbpokemon", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokemon", get clrType() { return __PokeworldPokemonCfg_pokemon.TbPokemon; },label: "LABEL_OPTIONAL"},
-            {name: "pokemon_cfg_tbmove", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbMove", get clrType() { return __PokeworldPokemonCfg_pokemon.TbMove; },label: "LABEL_OPTIONAL"},
-            {name: "pokemon_cfg_tbpoketypeinfo", number: 5, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokeTypeInfo", get clrType() { return __PokeworldPokemonCfg_pokemon.TbPokeTypeInfo; },label: "LABEL_OPTIONAL"},
-            {name: "world_cfg_tbworld", number: 6, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbWorld", get clrType() { return __PokeworldWorldCfg_world.TbWorld; },label: "LABEL_OPTIONAL"},
-            {name: "world_cfg_tbterrain", number: 7, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbTerrain", get clrType() { return __PokeworldWorldCfg_world.TbTerrain; },label: "LABEL_OPTIONAL"},
-            {name: "resource_cfg_tbresource", number: 8, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.TbResource", get clrType() { return __PokeworldResourceCfg_resource.TbResource; },label: "LABEL_OPTIONAL"}
+            {name: "actorCfgTbplayer", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.TbPlayer", get clrType() { return __PokeworldActorCfg_actor.TbPlayer; },label: "LABEL_OPTIONAL"},
+            {name: "networkCfgTbserver", number: 2, type: "TYPE_MESSAGE", typeName: ".pokeworld.network.cfg.TbServer", get clrType() { return __PokeworldNetworkCfg_network.TbServer; },label: "LABEL_OPTIONAL"},
+            {name: "pokemonCfgTbpokemon", number: 3, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokemon", get clrType() { return __PokeworldPokemonCfg_pokemon.TbPokemon; },label: "LABEL_OPTIONAL"},
+            {name: "pokemonCfgTbmove", number: 4, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbMove", get clrType() { return __PokeworldPokemonCfg_pokemon.TbMove; },label: "LABEL_OPTIONAL"},
+            {name: "pokemonCfgTbpoketypeinfo", number: 5, type: "TYPE_MESSAGE", typeName: ".pokeworld.pokemon.cfg.TbPokeTypeInfo", get clrType() { return __PokeworldPokemonCfg_pokemon.TbPokeTypeInfo; },label: "LABEL_OPTIONAL"},
+            {name: "worldCfgTbworld", number: 6, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbWorld", get clrType() { return __PokeworldWorldCfg_world.TbWorld; },label: "LABEL_OPTIONAL"},
+            {name: "worldCfgTbterrain", number: 7, type: "TYPE_MESSAGE", typeName: ".pokeworld.world.cfg.TbTerrain", get clrType() { return __PokeworldWorldCfg_world.TbTerrain; },label: "LABEL_OPTIONAL"},
+            {name: "resourceCfgTbresource", number: 8, type: "TYPE_MESSAGE", typeName: ".pokeworld.resource.cfg.TbResource", get clrType() { return __PokeworldResourceCfg_resource.TbResource; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -32,7 +32,7 @@ export class Tables {
      * @return {__PokeworldActorCfg_actor.TbPlayer} 
      */
     getActorCfgTbplayer() {
-        return this.actor_cfg_tbplayer;
+        return this.actorCfgTbplayer;
     }
 
     /** 
@@ -40,7 +40,7 @@ export class Tables {
      * @return {Tables} 
      */
     setActorCfgTbplayer(value) {
-        this.actor_cfg_tbplayer = value;
+        this.actorCfgTbplayer = value;
         return this;
     }
 
@@ -48,7 +48,7 @@ export class Tables {
      * @return {__PokeworldNetworkCfg_network.TbServer} 
      */
     getNetworkCfgTbserver() {
-        return this.network_cfg_tbserver;
+        return this.networkCfgTbserver;
     }
 
     /** 
@@ -56,7 +56,7 @@ export class Tables {
      * @return {Tables} 
      */
     setNetworkCfgTbserver(value) {
-        this.network_cfg_tbserver = value;
+        this.networkCfgTbserver = value;
         return this;
     }
 
@@ -64,7 +64,7 @@ export class Tables {
      * @return {__PokeworldPokemonCfg_pokemon.TbPokemon} 
      */
     getPokemonCfgTbpokemon() {
-        return this.pokemon_cfg_tbpokemon;
+        return this.pokemonCfgTbpokemon;
     }
 
     /** 
@@ -72,7 +72,7 @@ export class Tables {
      * @return {Tables} 
      */
     setPokemonCfgTbpokemon(value) {
-        this.pokemon_cfg_tbpokemon = value;
+        this.pokemonCfgTbpokemon = value;
         return this;
     }
 
@@ -80,7 +80,7 @@ export class Tables {
      * @return {__PokeworldPokemonCfg_pokemon.TbMove} 
      */
     getPokemonCfgTbmove() {
-        return this.pokemon_cfg_tbmove;
+        return this.pokemonCfgTbmove;
     }
 
     /** 
@@ -88,7 +88,7 @@ export class Tables {
      * @return {Tables} 
      */
     setPokemonCfgTbmove(value) {
-        this.pokemon_cfg_tbmove = value;
+        this.pokemonCfgTbmove = value;
         return this;
     }
 
@@ -96,7 +96,7 @@ export class Tables {
      * @return {__PokeworldPokemonCfg_pokemon.TbPokeTypeInfo} 
      */
     getPokemonCfgTbpoketypeinfo() {
-        return this.pokemon_cfg_tbpoketypeinfo;
+        return this.pokemonCfgTbpoketypeinfo;
     }
 
     /** 
@@ -104,7 +104,7 @@ export class Tables {
      * @return {Tables} 
      */
     setPokemonCfgTbpoketypeinfo(value) {
-        this.pokemon_cfg_tbpoketypeinfo = value;
+        this.pokemonCfgTbpoketypeinfo = value;
         return this;
     }
 
@@ -112,7 +112,7 @@ export class Tables {
      * @return {__PokeworldWorldCfg_world.TbWorld} 
      */
     getWorldCfgTbworld() {
-        return this.world_cfg_tbworld;
+        return this.worldCfgTbworld;
     }
 
     /** 
@@ -120,7 +120,7 @@ export class Tables {
      * @return {Tables} 
      */
     setWorldCfgTbworld(value) {
-        this.world_cfg_tbworld = value;
+        this.worldCfgTbworld = value;
         return this;
     }
 
@@ -128,7 +128,7 @@ export class Tables {
      * @return {__PokeworldWorldCfg_world.TbTerrain} 
      */
     getWorldCfgTbterrain() {
-        return this.world_cfg_tbterrain;
+        return this.worldCfgTbterrain;
     }
 
     /** 
@@ -136,7 +136,7 @@ export class Tables {
      * @return {Tables} 
      */
     setWorldCfgTbterrain(value) {
-        this.world_cfg_tbterrain = value;
+        this.worldCfgTbterrain = value;
         return this;
     }
 
@@ -144,7 +144,7 @@ export class Tables {
      * @return {__PokeworldResourceCfg_resource.TbResource} 
      */
     getResourceCfgTbresource() {
-        return this.resource_cfg_tbresource;
+        return this.resourceCfgTbresource;
     }
 
     /** 
@@ -152,7 +152,7 @@ export class Tables {
      * @return {Tables} 
      */
     setResourceCfgTbresource(value) {
-        this.resource_cfg_tbresource = value;
+        this.resourceCfgTbresource = value;
         return this;
     }
 

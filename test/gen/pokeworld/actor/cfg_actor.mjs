@@ -46,12 +46,12 @@ export class Player {
         fields: [
             {name: "id", number: 1, type: "TYPE_INT32", label: "LABEL_OPTIONAL"},
             {name: "name", number: 2, type: "TYPE_STRING", label: "LABEL_OPTIONAL"},
-            {name: "resource_id", number: 3, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"},
-            {name: "walk_speed", number: 4, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
-            {name: "walk_atlas_resource_id", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"},
-            {name: "run_speed", number: 6, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
-            {name: "starting_turn_time", number: 7, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
-            {name: "illustration_resource_id", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"}
+            {name: "resourceId", number: 3, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"},
+            {name: "walkSpeed", number: 4, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
+            {name: "walkAtlasResourceId", number: 5, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"},
+            {name: "runSpeed", number: 6, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
+            {name: "startingTurnTime", number: 7, type: "TYPE_FLOAT", label: "LABEL_OPTIONAL"},
+            {name: "illustrationResourceId", number: 8, type: "TYPE_ENUM", typeName: ".pokeworld.resource.cfg.ResourceId", get clrType() { return __PokeworldResourceCfg_resource.ResourceId; },label: "LABEL_OPTIONAL"}
         ]
     }
 
@@ -91,7 +91,7 @@ export class Player {
      * @return {__PokeworldResourceCfg_resource.ResourceId} 
      */
     getResourceId() {
-        return this.resource_id;
+        return this.resourceId;
     }
 
     /** 
@@ -99,7 +99,7 @@ export class Player {
      * @return {Player} 
      */
     setResourceId(value) {
-        this.resource_id = value;
+        this.resourceId = value;
         return this;
     }
 
@@ -107,7 +107,7 @@ export class Player {
      * @return {number} 
      */
     getWalkSpeed() {
-        return this.walk_speed;
+        return this.walkSpeed;
     }
 
     /** 
@@ -115,7 +115,7 @@ export class Player {
      * @return {Player} 
      */
     setWalkSpeed(value) {
-        this.walk_speed = value;
+        this.walkSpeed = value;
         return this;
     }
 
@@ -123,7 +123,7 @@ export class Player {
      * @return {__PokeworldResourceCfg_resource.ResourceId} 
      */
     getWalkAtlasResourceId() {
-        return this.walk_atlas_resource_id;
+        return this.walkAtlasResourceId;
     }
 
     /** 
@@ -131,7 +131,7 @@ export class Player {
      * @return {Player} 
      */
     setWalkAtlasResourceId(value) {
-        this.walk_atlas_resource_id = value;
+        this.walkAtlasResourceId = value;
         return this;
     }
 
@@ -139,7 +139,7 @@ export class Player {
      * @return {number} 
      */
     getRunSpeed() {
-        return this.run_speed;
+        return this.runSpeed;
     }
 
     /** 
@@ -147,7 +147,7 @@ export class Player {
      * @return {Player} 
      */
     setRunSpeed(value) {
-        this.run_speed = value;
+        this.runSpeed = value;
         return this;
     }
 
@@ -155,7 +155,7 @@ export class Player {
      * @return {number} 
      */
     getStartingTurnTime() {
-        return this.starting_turn_time;
+        return this.startingTurnTime;
     }
 
     /** 
@@ -163,7 +163,7 @@ export class Player {
      * @return {Player} 
      */
     setStartingTurnTime(value) {
-        this.starting_turn_time = value;
+        this.startingTurnTime = value;
         return this;
     }
 
@@ -171,7 +171,7 @@ export class Player {
      * @return {__PokeworldResourceCfg_resource.ResourceId} 
      */
     getIllustrationResourceId() {
-        return this.illustration_resource_id;
+        return this.illustrationResourceId;
     }
 
     /** 
@@ -179,7 +179,7 @@ export class Player {
      * @return {Player} 
      */
     setIllustrationResourceId(value) {
-        this.illustration_resource_id = value;
+        this.illustrationResourceId = value;
         return this;
     }
 
@@ -193,7 +193,7 @@ export class TbPlayer {
         fullName: "pokeworld.actor.cfg.TbPlayer",
         package: "pokeworld.actor.cfg",
         fields: [
-            {name: "data_list", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", get clrType() { return Player; },label: "LABEL_REPEATED"}
+            {name: "dataList", number: 1, type: "TYPE_MESSAGE", typeName: ".pokeworld.actor.cfg.Player", get clrType() { return Player; },label: "LABEL_REPEATED"}
         ]
     }
 
@@ -201,7 +201,7 @@ export class TbPlayer {
      * @return {Player[]} 
      */
     getDataList() {
-        return this.data_list;
+        return this.dataList;
     }
 
     /** 
@@ -209,7 +209,7 @@ export class TbPlayer {
      * @return {TbPlayer} 
      */
     setDataList(value) {
-        this.data_list = value;
+        this.dataList = value;
         return this;
     }
 
