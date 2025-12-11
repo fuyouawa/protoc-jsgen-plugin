@@ -166,14 +166,14 @@ export class Move {
     }
 
     /** 
-     * @return {PokeType} 
+     * @return {PokeType[keyof typeof PokeType]} 
      */
     getType() {
         return this.type;
     }
 
     /** 
-     * @param {PokeType} value 
+     * @param {PokeType[keyof typeof PokeType]} value 
      * @return {Move} 
      */
     setType(value) {
@@ -182,14 +182,14 @@ export class Move {
     }
 
     /** 
-     * @return {MoveCategory} 
+     * @return {MoveCategory[keyof typeof MoveCategory]} 
      */
     getCategory() {
         return this.category;
     }
 
     /** 
-     * @param {MoveCategory} value 
+     * @param {MoveCategory[keyof typeof MoveCategory]} value 
      * @return {Move} 
      */
     setCategory(value) {
@@ -558,14 +558,14 @@ export class Pokemon {
     }
 
     /** 
-     * @return {PokeType[]} 
+     * @return {PokeType[keyof typeof PokeType][]} 
      */
     getPokeTypes() {
         return this.pokeTypes;
     }
 
     /** 
-     * @param {PokeType[]} value 
+     * @param {PokeType[keyof typeof PokeType][]} value 
      * @return {Pokemon} 
      */
     setPokeTypes(value) {
@@ -911,14 +911,14 @@ export class PokeTypeInfo {
     }
 
     /** 
-     * @return {PokeType} 
+     * @return {PokeType[keyof typeof PokeType]} 
      */
     getType() {
         return this.type;
     }
 
     /** 
-     * @param {PokeType} value 
+     * @param {PokeType[keyof typeof PokeType]} value 
      * @return {PokeTypeInfo} 
      */
     setType(value) {

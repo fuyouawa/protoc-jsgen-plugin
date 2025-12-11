@@ -90,7 +90,7 @@ std::string TypeHelper::GetBaseJsType(
                     return transformed;
                 }
             }
-            return GetLastComponent(field.type_name());
+            return GetLastComponent(field.type_name()) + "[keyof typeof " + GetLastComponent(field.type_name()) + "]";
 
         case FieldDescriptorProto::TYPE_MESSAGE:
             if (type_name_transformer_) {

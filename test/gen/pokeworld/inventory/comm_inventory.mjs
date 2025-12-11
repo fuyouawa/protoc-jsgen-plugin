@@ -118,14 +118,14 @@ export class Inventory {
     }
 
     /** 
-     * @return {Tab} 
+     * @return {Tab[keyof typeof Tab]} 
      */
     getTab() {
         return this.tab;
     }
 
     /** 
-     * @param {Tab} value 
+     * @param {Tab[keyof typeof Tab]} value 
      * @return {Inventory} 
      */
     setTab(value) {

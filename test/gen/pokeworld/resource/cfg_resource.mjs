@@ -86,14 +86,14 @@ export class Resource {
     }
 
     /** 
-     * @return {ResourceId} 
+     * @return {ResourceId[keyof typeof ResourceId]} 
      */
     getId() {
         return this.id;
     }
 
     /** 
-     * @param {ResourceId} value 
+     * @param {ResourceId[keyof typeof ResourceId]} value 
      * @return {Resource} 
      */
     setId(value) {

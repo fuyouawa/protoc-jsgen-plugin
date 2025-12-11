@@ -156,14 +156,14 @@ export class TerrainDefinition {
     }
 
     /** 
-     * @return {TerrainType} 
+     * @return {TerrainType[keyof typeof TerrainType]} 
      */
     getType() {
         return this.type;
     }
 
     /** 
-     * @param {TerrainType} value 
+     * @param {TerrainType[keyof typeof TerrainType]} value 
      * @return {TerrainDefinition} 
      */
     setType(value) {

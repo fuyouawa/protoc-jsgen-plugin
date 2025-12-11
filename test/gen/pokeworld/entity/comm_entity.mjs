@@ -193,14 +193,14 @@ export class ActorTransform {
     }
 
     /** 
-     * @return {Direction} 
+     * @return {Direction[keyof typeof Direction]} 
      */
     getDirection() {
         return this.direction;
     }
 
     /** 
-     * @param {Direction} value 
+     * @param {Direction[keyof typeof Direction]} value 
      * @return {ActorTransform} 
      */
     setDirection(value) {
@@ -223,14 +223,14 @@ export class ActorState {
     }
 
     /** 
-     * @return {MotionState} 
+     * @return {MotionState[keyof typeof MotionState]} 
      */
     getMotionState() {
         return this.motionState;
     }
 
     /** 
-     * @param {MotionState} value 
+     * @param {MotionState[keyof typeof MotionState]} value 
      * @return {ActorState} 
      */
     setMotionState(value) {

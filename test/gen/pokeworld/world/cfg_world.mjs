@@ -123,14 +123,14 @@ export class Terrain {
     }
 
     /** 
-     * @return {TerrainRuleType[]} 
+     * @return {TerrainRuleType[keyof typeof TerrainRuleType][]} 
      */
     getExcludeRuleTypes() {
         return this.excludeRuleTypes;
     }
 
     /** 
-     * @param {TerrainRuleType[]} value 
+     * @param {TerrainRuleType[keyof typeof TerrainRuleType][]} value 
      * @return {Terrain} 
      */
     setExcludeRuleTypes(value) {
@@ -139,14 +139,14 @@ export class Terrain {
     }
 
     /** 
-     * @return {TerrainTileRuleType[]} 
+     * @return {TerrainTileRuleType[keyof typeof TerrainTileRuleType][]} 
      */
     getExcludeTileRuleTypes() {
         return this.excludeTileRuleTypes;
     }
 
     /** 
-     * @param {TerrainTileRuleType[]} value 
+     * @param {TerrainTileRuleType[keyof typeof TerrainTileRuleType][]} value 
      * @return {Terrain} 
      */
     setExcludeTileRuleTypes(value) {
@@ -155,14 +155,14 @@ export class Terrain {
     }
 
     /** 
-     * @return {TerrainType} 
+     * @return {TerrainType[keyof typeof TerrainType]} 
      */
     getType() {
         return this.type;
     }
 
     /** 
-     * @param {TerrainType} value 
+     * @param {TerrainType[keyof typeof TerrainType]} value 
      * @return {Terrain} 
      */
     setType(value) {
@@ -171,14 +171,14 @@ export class Terrain {
     }
 
     /** 
-     * @return {TerrainFlags} 
+     * @return {TerrainFlags[keyof typeof TerrainFlags]} 
      */
     getFlags() {
         return this.flags;
     }
 
     /** 
-     * @param {TerrainFlags} value 
+     * @param {TerrainFlags[keyof typeof TerrainFlags]} value 
      * @return {Terrain} 
      */
     setFlags(value) {

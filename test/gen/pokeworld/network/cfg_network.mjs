@@ -42,14 +42,14 @@ export class Server {
     }
 
     /** 
-     * @return {ServerType} 
+     * @return {ServerType[keyof typeof ServerType]} 
      */
     getType() {
         return this.type;
     }
 
     /** 
-     * @param {ServerType} value 
+     * @param {ServerType[keyof typeof ServerType]} value 
      * @return {Server} 
      */
     setType(value) {
